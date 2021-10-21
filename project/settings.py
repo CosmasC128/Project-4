@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Busrating',
-    'Emprating',
+    'Empreview',
     'Userprofile',
     'Businessprofile',
     'Jobpost',

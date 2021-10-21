@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EmpratingConfig(AppConfig):
+class EmpreviewConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Emprating'
+    name = 'Empreview'

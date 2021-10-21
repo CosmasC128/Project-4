@@ -22,6 +22,6 @@ urlpatterns = [
     path('/jobs/', include('Jobpost.urls')), # jobs.urls is referring to the urls.py file in the products dir
     path('/business-profile/', include('Businessprofile.urls')),
     path('/user-profile/', include('Userprofile.urls')),
-    path('/emprating/', include('Emprating.urls')),
+    path('/emprating/', include('Empreview.urls')),
     path('/busrating/', include('Busrating.urls'))
 ] #put api in front with no slash if our frontend is put together
