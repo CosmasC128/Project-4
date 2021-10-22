@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Userprofile',
     'Businessprofile',
     'Jobpost',
+    'Jobrole',
     'jwt_auth'
 ]
 

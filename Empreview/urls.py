@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import EmpreviewListView, EmpreviewDetailView
+from .views import EmpreviewListView
 
 urlpatterns = [
     path('', EmpreviewListView.as_view()),
-    path('<int:pk>/', EmpreviewDetailView.as_view())
 ]

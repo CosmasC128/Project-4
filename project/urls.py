@@ -23,5 +23,6 @@ urlpatterns = [
     path('/business-profile/', include('Businessprofile.urls')),
     path('/user-profile/', include('Userprofile.urls')),
     path('/emprating/', include('Empreview.urls')),
-    path('/busrating/', include('Busrating.urls'))
+    path('/busrating/', include('Busrating.urls')),
+    path('/jobrole/', include('Jobrole.urls'))
 ] #put api in front with no slash if our frontend is put together

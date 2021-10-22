@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import BusratingListView, BusratingDetailView
+from .views import BusratingListView
 
 urlpatterns = [
     path('', BusratingListView.as_view()),
-    path('<int:pk>/', BusratingDetailView.as_view())
 ]

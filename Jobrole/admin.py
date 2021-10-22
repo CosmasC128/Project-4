@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Jobroles # Importing the model from our models file to register to admin
+from .models import Jobrole # Importing the model from our models file to register to admin
 
 # I always do this immediately after creating the model so it's registered in the admin straight away
-admin.site.register(Jobroles)
+admin.site.register(Jobrole)

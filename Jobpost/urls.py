@@ -9,4 +9,5 @@ from .views import JobpostListView, JobpostDetailView
 
 urlpatterns = [
     path('', JobpostListView.as_view()), # /jobs/
+    path('<int:pk>/', JobpostDetailView.as_view()), # /jobs/
 ]
