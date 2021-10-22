@@ -3,17 +3,17 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # import models
-from .models import Jobrole
+from .models import Jobroles
 
 # import serializers
-from .serializers.populated import PopulatedJobroleSerializer
+from .serializers.populated import PopulatedJobrolesSerializer
 
 # Define views
-class JobroleListView(APIView):
+class JobrolesListView(APIView):
 
-    # GET genres
-    # This will return all genres
+    # GET Jobroless
+    # This will return all Jobroless
     def get(self, _request):
-        jobroles = Jobrole.objects.all()
-        serialized_Jobroles = PopulatedJobroleSerializer(jobroles, many=True)
-        return Response(serialized_Jobroles.data, status=status.HTTP_200_OK)
+        jobroles = Jobroles.objects.all()
+        serialized_jobroles = PopulatedJobrolesSerializer(jobroles, many=True)
+        return Response(serialized_jobroles.data, status=status.HTTP_200_OK)
