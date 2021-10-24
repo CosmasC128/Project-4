@@ -12,7 +12,7 @@ class Userprofile(models.Model):
     location = models.CharField(max_length=300, default=None)
     cover_letter = models.TextField(max_length=3000, default=None)
     cv = models.TextField(max_length=3000, default=None)
-    head_shot = models.TextField(max_length=100, default=None)
+    head_shot = models.ImageField(upload_to='images')
     
     Businessprofile = models.ManyToManyField(
         'Businessprofile.Businessprofile', # Build many to many relationship through the Genre model in the genres app
