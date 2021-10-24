@@ -18,11 +18,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', include('jwt_auth.urls')),
-    path('/jobs/', include('Jobpost.urls')), # jobs.urls is referring to the urls.py file in the products dir
-    path('/business-profile/', include('Businessprofile.urls')),
-    path('/user-profile/', include('Userprofile.urls')),
-    path('/emprating/', include('Empreview.urls')),
-    path('/busrating/', include('Busrating.urls')),
-    path('/jobrole/', include('Jobrole.urls'))
+    path('api/auth', include('jwt_auth.urls')),
+    path('api/jobs/', include('Jobpost.urls')), # jobs.urls is referring to the urls.py file in the products dir
+    path('api/business-profile/', include('Businessprofile.urls')),
+    path('api/user-profile/', include('Userprofile.urls')),
+    path('api/emprating/', include('Empreview.urls')),
+    path('api/busrating/', include('Busrating.urls')),
+    path('api/jobrole/', include('Jobrole.urls'))
 ] #put api in front with no slash if our frontend is put together
