@@ -14,7 +14,8 @@ class Businessprofile(models.Model):
     
     Userprofiles = models.ManyToManyField(
         'Userprofile.Userprofile', # Build many to many relationship through the Genre model in the genres app
-        related_name = "userprofiles"
+        related_name = "userprofiles",
+        blank=True
     )
 
 

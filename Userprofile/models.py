@@ -16,7 +16,8 @@ class Userprofile(models.Model):
     
     Businessprofile = models.ManyToManyField(
         'Businessprofile.Businessprofile', # Build many to many relationship through the Genre model in the genres app
-        related_name = "businesses"
+        related_name = "businesses",
+        blank=True
     )
     owner = models.ForeignKey(
         'jwt_auth.User',

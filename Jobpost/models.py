@@ -8,7 +8,11 @@ class Jobpost(models.Model):
     title = models.CharField(max_length=50)
     location = models.CharField(max_length=50)
     text = models.TextField(max_length=3000) # TextField used because it uses a textarea in the admin instead of a text input, type of VARCHA
-    jobrole = models.CharField(max_length=50)
+    jobrole = models.ForeignKey(
+      "Jobrole.Jobrole", # this defines the {app}.{modelName} that we are looking to create a relationship with
+      related_name = "Jobrole", # this is what the column will be called on the business lookup
+      on_delete = models.CASCADE # this specifies that the jobpost should be deleted if the jobrole is deleted
+    )
     business = models.ForeignKey(
       "Businessprofile.Businessprofile", # this defines the {app}.{modelName} that we are looking to create a relationship with
       related_name = "Business", # this is what the column will be called on the business lookup
