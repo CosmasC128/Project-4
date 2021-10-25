@@ -9,5 +9,6 @@ from .views import UserprofileListView, UserprofileDetailView
 
 urlpatterns = [
     path('', UserprofileListView.as_view()), # /Userprofiles/
-    path('<int:pk>/', UserprofileDetailView.as_view()) # /Userprofiles/:pk/
+    path('<int:pk>/', UserprofileDetailView.as_view()), # /Userprofiles/:pk/
+    path('upload/', views.image_upload_view)
 ]

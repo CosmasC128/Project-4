@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/auth', include('jwt_auth.urls')),
     path('api/jobs/', include('Jobpost.urls')), # jobs.urls is referring to the urls.py file in the products dir
     path('api/business-profile/', include('Businessprofile.urls')),
     path('api/user-profile/', include('Userprofile.urls')),
@@ -26,3 +27,5 @@ urlpatterns = [
     path('api/busrating/', include('Busrating.urls')),
     path('api/jobrole/', include('Jobrole.urls'))
 ] #put api in front with no slash if our frontend is put together
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
