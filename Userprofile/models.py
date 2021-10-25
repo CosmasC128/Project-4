@@ -15,7 +15,7 @@ class Userprofile(models.Model):
     image = models.ImageField(upload_to='images', blank=True)
     Businessprofile = models.ManyToManyField(
         'Businessprofile.Businessprofile', # Build many to many relationship through the Genre model in the genres app
-        related_name = "businesses",
+        related_name = "userprofiles",
         blank=True
     )
     owner = models.ForeignKey(

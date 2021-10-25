@@ -9,7 +9,7 @@ class Empreview(models.Model):
 
     businessprofile = models.ForeignKey(
         "Businessprofile.Businessprofile", # this defines the {app}.{modelName} that we are looking to create a relationship with
-        related_name = "reviews", # this is what the column will be called on the businessprofile lookup
+        related_name = "employeereviews", # this is what the column will be called on the businessprofile lookup
         on_delete = models.CASCADE # this specifies that the review should be deleted if the businessprofile is deleted
     )
     owner = models.ForeignKey(

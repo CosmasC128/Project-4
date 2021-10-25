@@ -8,7 +8,7 @@ class Busrating(models.Model):
     punctuality = models.PositiveIntegerField(default=0)
     userprofile = models.ForeignKey(
         "Userprofile.Userprofile", # this defines the {app}.{modelName} that we are looking to create a relationship with
-        related_name = "ratings", # this is what the column will be called on the userprofile lookup
+        related_name = "businessratings", # this is what the column will be called on the userprofile lookup
         on_delete = models.CASCADE # this specifies that the rating should be deleted if the userprofile is deleted
     )
     owner = models.ForeignKey(

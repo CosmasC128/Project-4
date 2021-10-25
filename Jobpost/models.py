@@ -15,7 +15,7 @@ class Jobpost(models.Model):
     )
     business = models.ForeignKey(
       "Businessprofile.Businessprofile", # this defines the {app}.{modelName} that we are looking to create a relationship with
-      related_name = "Business", # this is what the column will be called on the business lookup
+      related_name = "jobposts", # this is what the column will be called on the business lookup
       on_delete = models.CASCADE # this specifies that the business should be deleted if the product is deleted
     )
     owner = models.ForeignKey(
