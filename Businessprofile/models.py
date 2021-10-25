@@ -20,7 +20,7 @@ class Businessprofile(models.Model):
 
     owner = models.ForeignKey(
         'jwt_auth.User',
-        related_name = 'userprofiles',
+        related_name = 'businessprofile',
         on_delete = models.CASCADE
     )
 

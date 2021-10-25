@@ -26,7 +26,8 @@ urlpatterns = [
     path('api/user-profile/', include('Userprofile.urls')),
     path('api/emprating/', include('Empreview.urls')),
     path('api/busrating/', include('Busrating.urls')),
-    path('api/jobrole/', include('Jobrole.urls'))
+    path('api/jobposts/', include('Jobpost.urls')),
+    path('api/jobroles/', include('Jobrole.urls'))
 ] #put api in front with no slash if our frontend is put together
 if settings.DEBUG:
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -14,7 +14,7 @@ class Userprofile(models.Model):
     cv = models.TextField(max_length=3000, default=None)
     image = models.ImageField(upload_to='images', blank=True)
     Businessprofile = models.ManyToManyField(
-        'Businessprofile.Businessprofile', # Build many to many relationship through the Genre model in the genres app
+        'Businessprofile.Businessprofile', 
         related_name = "userprofiles",
         blank=True
     )

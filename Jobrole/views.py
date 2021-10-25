@@ -11,6 +11,13 @@ from .serializers.common import JobroleSerializer
 
 class JobroleListView(APIView):
 
+    def get(self, _request):
+        jobroles = Jobrole.objects.all() 
+        print('jobroles', jobroles)
+        serialized_jobroles = JobroleSerializer(jobroles, many=True)
+        print('SERIALIZER', serialized_jobroles.data)
+        return Response(serialized_jobroles.data, status=status.HTTP_200_OK)
+        
     # POST /Jobroles/
     # Adds a new Jobrole
     def post(self, request):
@@ -20,7 +27,6 @@ class JobroleListView(APIView):
             jobrole_to_add.save()
             return Response(jobrole_to_add.data, status=status.HTTP_201_CREATED)
         return Response(jobrole_to_add.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
 
 # Define views
 class JobroleDetailView(APIView):

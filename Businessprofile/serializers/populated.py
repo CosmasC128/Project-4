@@ -6,6 +6,5 @@ from jwt_auth.serializers.common import UserSerializer
 
 class PopulatedBusinessprofileSerializer(BusinessprofileSerializer):
     owner = UserSerializer()
-    userprofiles = PopulatedUserprofileSerializer(many=True)
     employeereviews = PopulatedEmpreviewSerializer(many=True)
     jobposts = PopulatedJobpostSerializer(many=True)
