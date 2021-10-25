@@ -19,6 +19,11 @@ class Jobpost(models.Model):
       related_name = "jobposts", # this is what the column will be called on the business lookup
       on_delete = models.CASCADE # this specifies that the business should be deleted if the product is deleted
     )
+    Userprofiles = models.ManyToManyField(
+      'Userprofile.Userprofile', # Build many to many relationship through the Genre model in the genres app
+      related_name = "jobposts",
+      blank=True
+    )
     owner = models.ForeignKey(
       "jwt_auth.User",
       related_name = "jobpost",
