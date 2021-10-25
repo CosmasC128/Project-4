@@ -4,4 +4,4 @@ from .common import JobpostSerializer
 
 class PopulatedJobpostSerializer(JobpostSerializer):
     owner = UserSerializer()
-    Jobrole = JobroleSerializer()
+    jobrole = JobroleSerializer()
