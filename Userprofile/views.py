@@ -8,9 +8,6 @@ from .models import Userprofile
 from .serializers.common import UserprofileSerializer
 from .serializers.populated import PopulatedUserprofileSerializer
 
-from django.shortcuts import render
-from .forms import ImageForm
-
 # This is my FOURTH step after creating the serializer
 # Here we are making a request to the db and saving it to the products variable
 # It's returned in an unusable format, which is where the serializer comes in...
@@ -74,16 +71,3 @@ class UserprofileDetailView(APIView):
             print('Updated data', updated_userprofile.data)
             return Response(updated_userprofile.data, status=status.HTTP_202_ACCEPTED)
         return Response(updated_userprofile.errors, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
-
-    def image_upload_view(request):
-        """Process images uploaded by users"""
-        if request.method == 'POST':
-            form = ImageForm(request.POST, request.FILES)
-            if form.is_valid():
-                form.save()
-                # Get the current instance object to display in the template
-                img_obj = form.instance
-                return render(request, 'index.html', {'form': form, 'img_obj': img_obj})
-        else:
-            form = ImageForm()
-        return render(request, 'index.html', {'form': form})
