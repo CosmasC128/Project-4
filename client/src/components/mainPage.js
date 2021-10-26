@@ -1,6 +1,10 @@
 import React from 'react'
 
 const MainPage = () => {
+
+  // login or registration, can toggle between two forms
+  // don't display header or footer
+
   const errors = 0
   const Gary = null
   const handleChange = () => {

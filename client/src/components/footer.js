@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Footer = () => {
+
+  // sexy footer for the whole website
+
   return (
     <>
       <div id="footWrap">
