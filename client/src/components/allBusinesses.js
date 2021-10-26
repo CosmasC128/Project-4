@@ -21,7 +21,7 @@ const AllBusinesses = () => {
     getData()
   }, [])
   // console.log( 'type of businesses: ', typeof businesses)
-  console.log(businesses, 'businesses')
+  // console.log(businesses, 'businesses')
   // <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
   // (filters.searchTerm !== '' ? searchMatches : sortedArray )
   return (<>

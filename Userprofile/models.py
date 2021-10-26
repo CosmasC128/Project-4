@@ -7,10 +7,10 @@ from django.db import models
 
 class Userprofile(models.Model):
     # Each field is blank=False by default, which is the same as required
-    first_name = models.CharField(max_length=50, default=None) # default=None is necessary if we are adding the field after we already have data in our table, it means that it won't throw a missing field error, because None is still a value
-    last_name = models.CharField(max_length=50, default=None) # default=None is necessary if we are adding the field after we already have data in our table, it means that it won't throw a missing field error, because None is still a value
+    firstname = models.CharField(max_length=50, default=None) # default=None is necessary if we are adding the field after we already have data in our table, it means that it won't throw a missing field error, because None is still a value
+    lastname = models.CharField(max_length=50, default=None) # default=None is necessary if we are adding the field after we already have data in our table, it means that it won't throw a missing field error, because None is still a value
     location = models.CharField(max_length=300, default=None)
-    cover_letter = models.TextField(max_length=3000, default=None)
+    coverletter = models.TextField(max_length=3000, default=None)
     cv = models.TextField(max_length=3000, default=None)
     image = models.ImageField(upload_to='images', blank=True)
     Businessprofile = models.ManyToManyField(
