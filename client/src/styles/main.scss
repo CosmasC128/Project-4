@@ -1,0 +1,109 @@
+
+// ~~~~~~~~~ NAV BAR ~~~~~~~~~~~~~~~~~~~
+
+#navbar{
+  background-color: rgb(148, 137, 137);
+  border-bottom: 1px solid white;
+}
+
+#navwrap{
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logReg{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: calc(50% - 100px);
+}
+
+#navLink {
+  background-color: rgb(148, 137, 137);
+  padding: 5px 10px 5px 10px;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+  text-decoration: none;
+  color: inherit;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+#navLinkLogout {
+  padding: 5px 10px 5px 10px;
+  background-color: #392b68;
+  color: white;
+  font-size: larger;
+  font-weight: bold;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+  text-decoration: none;
+  color: inherit;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
+#navLink:hover {
+  background-color: rgb(148, 137, 137);
+  color: #af8f4d;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+  border-color: #f5d075;
+}
+
+#navLinkLogout:hover {
+  background-color: rgb(148, 137, 137);
+  color: #af8f4d;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+  border-color: #f5d075;
+}
+
+
+// ~~~~~~~~~~~~~ FOOTER ~~~~~~~~~~~~~~~~~~
+
+#footWrap{
+  border-top: 1px solid white;
+  margin-top: 0;
+  height: 50px;
+}
+#footer{
+  color: rgba(120, 120, 120, 0.81);
+  font-size: 14px;
+  margin-left: 100px;
+  margin-right: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leftText{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 180px;
+}
+
+.ourLinks{
+  margin-left: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ourLinks:hover{
+  color: white;
+}
+
+#footerUl1, #footerUl2{
+  display: flex;
+}
+
+.hoverList:hover{
+  color: white;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+}
+
