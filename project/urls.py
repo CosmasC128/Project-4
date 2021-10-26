@@ -24,7 +24,7 @@ urlpatterns = [
     path('api/jobs/', include('Jobpost.urls')), # jobs.urls is referring to the urls.py file in the products dir
     path('api/business-profile/', include('Businessprofile.urls')),
     path('api/user-profile/', include('Userprofile.urls')),
-    path('api/emprating/', include('Empreview.urls')),
+    path('api/empreview/', include('Empreview.urls')),
     path('api/busrating/', include('Busrating.urls')),
     path('api/jobposts/', include('Jobpost.urls')),
     path('api/jobroles/', include('Jobrole.urls'))
