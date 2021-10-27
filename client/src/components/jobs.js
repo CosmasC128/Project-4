@@ -12,7 +12,6 @@ const AllJobs = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('api/jobs/')
-        console.log(data)
         setJobs(data)
       } catch (error) {
         console.log(error)
