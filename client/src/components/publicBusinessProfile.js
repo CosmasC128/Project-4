@@ -6,12 +6,13 @@ const PublicBusinessProfile = () => {
 
   // link from business card, or from job post, can rate the business here if have relationship
   const { id } = useParams()
+  console.log(id)
   const [ business, setBusiness ] = useState([])
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`api/business-profile/${ id }`)
+        const { data } = await axios.get(`/api/business-profile/${ id }/`)
         setBusiness({ ...data })
       } catch (error) {
         console.log(error)

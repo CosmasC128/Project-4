@@ -10,7 +10,7 @@ const PublicEmployeeProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`api/employee-profile/${ id }`)
+        const { data } = await axios.get(`/api/user-profile/${ id }`)
         setEmployee({ ...data })
       } catch (error) {
         console.log(error)

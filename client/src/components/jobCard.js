@@ -1,18 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+// import { getPayload } from '../helpers/auth.js'
 
 const JobCard = (props) => { //pull in usersViewed array through here as well
-
+  // console.log(props, 'props')
   // Get job post fields from passed props
   const id = props.id
+  const owner = props.owner
   const title = props.title
   const location = props.location
   const businessID = props.business
   const text = props.text
   const jobrole = props.jobrole.jobrole
   const image = props.image
-  
+  const Userprofiles = props.Userprofiles
+
+  // const userID = getPayload().sub
+
+  // console.log(userID, 'userid if it exists')
+
+  // const findUserprofileId = () => {
+  //   for (let i = 0; i < allUserData.length; i++){
+  //     if (allUserData[i].owner.id === userID){
+  //       PageID = allUserData[i].id
+  //     }
+  //   }
+  // }
+
+  // findMatchingId()
+
+
   // get the associated business to provide link to business and business name
   const [ business, setBusiness ] = useState([])
   useEffect(() => {
@@ -29,21 +47,25 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
 
   // buttons for expanding the job post and applying
 
-  // apply to the job
-
-  // const handleApply = async () => {
-  //   try {
-  //     await axios.put(
-  //       `/api/matches/${matchId}/comments/${_id}`,
-  //       {
-  //         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-  //       }
-  //     )
-  //     getMatch()
-  //   } catch (err) {
-  //     console.log(err)  
-  //   }
-  // }
+  const handleApply = async () => {
+    try {
+      console.log('youve applied to this job')
+      Userprofiles.push(4)
+      console.log(Userprofiles, 'updated profiles after push')
+      await axios.put(`api/jobposts/${id}/`, { 
+        Userprofiles: Userprofiles,
+        id: id,
+        owner: owner,
+        title: title,
+        location: location,
+        businessID: businessID,
+        text: text,
+        jobrole: jobrole,
+      })
+    } catch (err) {
+      console.log(err)  
+    }
+  }
 
   const jobCard = document.getElementById(`job${id}`)
   const jobCardMax = document.getElementById(`jobCardMax${id}`)
@@ -56,7 +78,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       jobCard.style.color = 'blue'
       jobCardMax.style.display = 'flex'
     } else {
-      jobCard.style.color = 'red'
+      jobCard.style.color = 'black'
       jobCardMax.style.display = 'none'
     }
   }
@@ -74,10 +96,10 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       </div>
       <div id={`jobCardMax${id}`}>
         text: {text}
-        <button id="applyToJobCard" >Apply</button>
+        <button id="applyToJobCard" onClick={handleApply}>Apply</button>
       </div>
     </div>
   </>)
-  // onClick={handleApply}
 }
+
 export default JobCard
