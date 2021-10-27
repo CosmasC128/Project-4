@@ -13,6 +13,7 @@ const AllBusinesses = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('api/business-profile/')
+        console.log(data, 'from businesses')
         setBusinesses(Object.values({ ...data }))
       } catch (error) {
         console.log(error)

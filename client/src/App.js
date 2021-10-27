@@ -13,7 +13,6 @@ import PublicBusinessProfile from './components/publicBusinessProfile.js'
 import PublicEmployeeProfile from './components/publicEmployeeProfile.js'
 import BusinessProfile from './components/businessProfile.js'
 import EmployeeProfile from './components/employeeProfile.js'
-import BusinessCard from './components/businessCard.js'
 
 function App() {
 
@@ -42,9 +41,6 @@ function App() {
           </Route>
           <Route exact path='/all-businesses'>
             <AllBusinesses />
-          </Route>
-          <Route exact path="/all-businesses/BusinessCard">
-            <BusinessCard />
           </Route>
           <Route exact path="/all-businesses/:id">
             <PublicBusinessProfile />

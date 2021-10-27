@@ -1,18 +1,41 @@
-import React from 'react'
 import JobCard from './jobCard.js'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
-const Jobs = () => {
+const AllJobs = () => {
 
-  //  get all on job posts, map of jobcard component, displays all available jobs from all businesses.
+  // this should have a map of the Jobs cards
 
-  return (
-    <>
-      <footer>
-        <p >These are all the jobs we have!!!!</p>
-        <JobCard />
-      </footer>
-    </>
-  )
+  const [ jobs, setJobs ] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('api/jobs/')
+        console.log(data)
+        setJobs(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
+  // <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
+  // (filters.searchTerm !== '' ? searchMatches : sortedArray )
+  return (<>
+    <div className="allJobsWrapper">
+      <div id="aboveAllJobsGrid">
+        <h1 id="allJobsTitle">All The Jobs</h1>
+        <h2 id="allJobsFlavour">Search for Jobs to work at, or to review.</h2>
+      </div>
+      <div className="allJobsGrid">
+        { jobs.map(job => { 
+          return <JobCard key={job.id} { ...job } />
+        })}
+      </div>
+    </div>
+  </>)
 }
 
-export default Jobs
+export default AllJobs

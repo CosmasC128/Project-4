@@ -11,7 +11,7 @@ const AllEmployees = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('api/business-profile/')
+        const { data } = await axios.get('api/user-profile/')
         setEmployees(Object.values({ ...data }))
       } catch (error) {
         console.log(error)
@@ -20,7 +20,7 @@ const AllEmployees = () => {
     getData()
   }, [])
   // console.log( 'type of Employees: ', typeof Employees)
-  console.log(employees, 'employees')
+  // console.log(employees, 'employees')
   // <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
   // (filters.searchTerm !== '' ? searchMatches : sortedArray )
   return (<>
