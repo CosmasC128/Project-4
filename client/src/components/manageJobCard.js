@@ -41,24 +41,20 @@ const ManageJobCard = (props) => {
   const handleSubmit = async () => {
     console.log(`submit job # ${id}`)
   }
-  const jobAvailibilityToggler = document.getElementById(`availability${id}`)
-  const availabilityButton = document.getElementById(`toggleAvailability${id}`)
-  if  (jobAvailibilityToggler){
-    if (availability === true){
-      availabilityText = 'Available'
-      console.log(availabilityButton, 'this is here')
-      // availabilityButton.innerHTML = availabilityText
-    } else {
-      availabilityText = 'Unavailable'
-      // availabilityButton.innerHTML = availabilityText
-    }
-  }
+  // const jobAvailibilityToggler = document.getElementById(`availability${id}`)
 
+  if (availability === true){
+    availabilityText = 'Available'
+  } else {
+    availabilityText = 'Unavailable'
+  }
 
   const handleAvailability = async () => {
     if (availabilityText === 'Available' ){
       try {
         availabilityText = 'Unavailable'
+        document.getElementById(`toggleAvailability${id}`).innerHTML = availabilityText
+        document.getElementById(`toggleAvailability${id}`).style.color = 'red'
         console.log(`job # ${id} is now: `, availabilityText)
         // availabilityButton.innerHTML = availabilityText
         await axios.put(`/api/jobposts/${id}/`, { 
@@ -77,6 +73,8 @@ const ManageJobCard = (props) => {
     } else {
       try {
         availabilityText = 'Available'
+        document.getElementById(`toggleAvailability${id}`).innerHTML = availabilityText
+        document.getElementById(`toggleAvailability${id}`).style.color = 'black'
         console.log(`job # ${id} is now: `, availabilityText)
         // availabilityButton.innerHTML = availabilityText
         await axios.put(`/api/jobposts/${id}/`, { 
@@ -96,8 +94,18 @@ const ManageJobCard = (props) => {
   }
 
   const handleDelete = async () => {
+    const finalDeleteButton = document.getElementById(`areYouSure${id}`)
+    if (finalDeleteButton.style.display !== 'flex'){
+      finalDeleteButton.style.display = 'flex'
+    } else {
+      finalDeleteButton.style.display = 'none'
+    }
+  }
+
+  const handleAreYouSure = async () => {
     console.log(`You don't actually want to delete job # ${id}`)
   }
+
   return (<>
     <div className="manageJobWrapper" id={'job' + String(id)}>
       <img className="manageJobImage" src={image} alt="Job Image"></img>
@@ -107,10 +115,11 @@ const ManageJobCard = (props) => {
       </div>
       <div className="manageJobMin">
         text: {text}
-        <div id={`availability${id}`}>{availabilityText}</div>
-        <button id={`toggleAvailability${id}`} onClick={handleAvailability}>Availability</button>
+        <div id={`availability${id}`}>{availability === true ? 'Available' : 'Unavailable'}</div>
+        <button id={`toggleAvailability${id}`} onClick={handleAvailability}>Toggle Availability</button>
         <button id={`submit${id}`} onClick={handleSubmit}>Submit Changes</button>
         <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
+        <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
       </div>
     </div>
   </>)
