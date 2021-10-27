@@ -7,11 +7,11 @@ const EmployeeCard = ({ id, firstname, lastname, location, coverletter, image })
   return (<>
     <div className="employeeCardWrapper">
       <Link to={`/all-employeees/${ id }`} id="employeeLink">
-        <div id="employeeCardTitle">Name: {first_name} {last_name}</div>
+        <div id="employeeCardTitle">Name: {firstname} {lastname}</div>
         <img className="employeeCardImage" src={image} alt="Employee Image"></img>
         <div className="employeeCardData">
           location {location} <br/>
-          cover_letter {cover_letter.slice(0, 30)}
+          cover_letter {coverletter.slice(0, 30)}
         </div>  
       </Link>  
     </div>
