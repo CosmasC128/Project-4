@@ -19,11 +19,10 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   const Userprofiles = [ ...props.Userprofiles ]
 
   // *** GET THE LOGGED IN USERS ID, USE IT TO FIND THEIR PROFILE
-  // that profile id will be later pushed into the applicants array in the job post
+  // *** FIND THE USERPROFILE, SET THE PROFILE ID BASED ON IT
+  // *** THIS IS LATER USED TO PUSH USERPROFILE ID INTO ARRAY ON JOB POST
   const userID = 4 // getPayload().sub only add this in once I have a login functionality
   let profileID = 0
-  // console.log(userID, 'userid if it exists')
-
   const findProfileId = () => {
     for (let i = 0; i < usersArray.length; i++){
       if (usersArray[i].owner.id === userID){
@@ -31,9 +30,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       }
     }
   }
-
   const [ usersArray, setUsersArray ] = useState([])
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -48,7 +45,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   findProfileId()
   console.log(profileID)
 
-  // get the associated business to provide link to business and business name
+  // *** FIND ASSOCIATED BUSINESS TO LINK JOB POST TO BUSINESS PROFILE
   const [ business, setBusiness ] = useState([])
   useEffect(() => {
     const getData = async () => {
@@ -62,10 +59,9 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     getData()
   }, [businessID])
 
-  // buttons for expanding the job post and applying
+  // *** APPLY TO THE JOB
 
   const applyButton = document.getElementById(`applyToJobCard${id}`)
-
   const handleApply = async () => {
     try {
       console.log(profileID, 'has applied to this job')
@@ -87,14 +83,12 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     }
   }
 
-
-
+  // *** MAXIMIZE JOB CARD TO APPLY
   const jobCard = document.getElementById(`job${id}`)
   const jobCardMax = document.getElementById(`jobCardMax${id}`)
   if (jobCardMax){
     jobCardMax.style.display = 'none'
   }
-
   const handleExpand = () => {
     if (jobCard.style.color !== 'blue') {
       jobCard.style.color = 'blue'
