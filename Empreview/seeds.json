@@ -1,0 +1,26 @@
+[
+{
+  "model": "Empreview.empreview",
+  "pk": 1,
+  "fields": {
+    "pay": 3,
+    "patience": 3,
+    "positivity": 3,
+    "punishment": 3,
+    "businessprofile": 1,
+    "owner": 2
+  }
+},
+{
+  "model": "Empreview.empreview",
+  "pk": 2,
+  "fields": {
+    "pay": 1,
+    "patience": 1,
+    "positivity": 1,
+    "punishment": 1,
+    "businessprofile": 2,
+    "owner": 3
+  }
+}
+]

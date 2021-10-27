@@ -1,0 +1,30 @@
+[
+{
+  "model": "Jobpost.jobpost",
+  "pk": 1,
+  "fields": {
+    "title": "Taco maker - cos2 biz - south london location",
+    "location": "london",
+    "text": "10 pounds an hour, back breaking labour, bring a shovel",
+    "available": false,
+    "jobrole": 1,
+    "business": 1,
+    "owner": 3,
+    "Userprofiles": []
+  }
+},
+{
+  "model": "Jobpost.jobpost",
+  "pk": 2,
+  "fields": {
+    "title": "Frycook - Spicy Shack",
+    "location": "east london",
+    "text": "cook stuff",
+    "available": false,
+    "jobrole": 2,
+    "business": 2,
+    "owner": 5,
+    "Userprofiles": []
+  }
+}
+]

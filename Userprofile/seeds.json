@@ -1,0 +1,34 @@
+[
+{
+  "model": "Userprofile.userprofile",
+  "pk": 3,
+  "fields": {
+    "firstname": "cos",
+    "lastname": "cos",
+    "location": "london",
+    "coverletter": "I want to work for you",
+    "cv": "i went to school",
+    "image": "",
+    "owner": 4,
+    "Businessprofile": [
+      1
+    ]
+  }
+},
+{
+  "model": "Userprofile.userprofile",
+  "pk": 4,
+  "fields": {
+    "firstname": "will",
+    "lastname": "alvarez",
+    "location": "west london",
+    "coverletter": "I need job",
+    "cv": "I went to school, more than a couple times",
+    "image": "",
+    "owner": 3,
+    "Businessprofile": [
+      2
+    ]
+  }
+}
+]

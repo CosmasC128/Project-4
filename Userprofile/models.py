@@ -27,4 +27,4 @@ class Userprofile(models.Model):
     # __str__ function is predefined and part of Model class we inherited
     # Just returns a title string for when we create records in the admin system
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.firstname} {self.lastname}"
