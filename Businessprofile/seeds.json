@@ -1,0 +1,26 @@
+[
+{
+  "model": "Businessprofile.businessprofile",
+  "pk": 1,
+  "fields": {
+    "title": "cos2 biz - north london222",
+    "location": "n london2",
+    "description": "Work for me please, at the north london location22",
+    "image": "",
+    "owner": 2,
+    "Userprofiles": []
+  }
+},
+{
+  "model": "Businessprofile.businessprofile",
+  "pk": 2,
+  "fields": {
+    "title": "Spicy Shack East London",
+    "location": "E London",
+    "description": "We got jobs",
+    "image": "",
+    "owner": 5,
+    "Userprofiles": []
+  }
+}
+]

@@ -1,0 +1,51 @@
+[
+{
+  "model": "Jobrole.jobrole",
+  "pk": 1,
+  "fields": {
+    "jobrole": "Server"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 2,
+  "fields": {
+    "jobrole": "Cook"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 3,
+  "fields": {
+    "jobrole": "Manager"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 4,
+  "fields": {
+    "jobrole": "Cashier"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 5,
+  "fields": {
+    "jobrole": "Stockroom"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 6,
+  "fields": {
+    "jobrole": "Porter"
+  }
+},
+{
+  "model": "Jobrole.jobrole",
+  "pk": 7,
+  "fields": {
+    "jobrole": "Bartender"
+  }
+}
+]

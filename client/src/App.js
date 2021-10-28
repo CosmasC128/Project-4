@@ -1,10 +1,8 @@
 import React from 'react'
-
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import MainPage from './components/mainPage.js'
 import Header from './components/header.js'
 import Footer from './components/footer.js'
-
 import CreateProfile from './components/createProfile.js'
 import Jobs from './components/jobs.js'
 import AllEmployees from './components/allEmployees.js'
@@ -26,17 +24,18 @@ function App() {
           <Route exact path='/'> 
             <MainPage />
           </Route>
-          {/* put method for all aspects of profile */}
           <Route exact path='/profile/creation'> 
             <CreateProfile />
           </Route>
           <Route exact path='/profile/employee/:id'> 
             <EmployeeProfile />
           </Route>
-          <Route exact path='/profile/business/:id'> 
+          <Route exact path='/profile/business/:id'>
             <BusinessProfile />
           </Route>
-          {/* Employees land on jobs next, can apply to jobs, map of all jobs in cards, and click to expand job to apply to it, or click through to business public profile */}
+          <Route exact path='/profile/business/:id/manage-jobs'>
+            <ManageJobs />
+          </Route>
           <Route exact path='/jobs'>
             <Jobs />
           </Route>
@@ -46,20 +45,12 @@ function App() {
           <Route exact path="/all-businesses/:id">
             <PublicBusinessProfile />
           </Route>
-          {/* business creates jobes makes some available hires employees */}
-          <Route exact path='/manage-jobs'>
-            <ManageJobs />
-          </Route>
           <Route exact path='/all-employees'>
             <AllEmployees />
           </Route>
-          {/* very few methods, just display pages */}
-          {/* what employees can look at, has business info and rating, can review the business there */}
-          {/* view employee public info and rating / rate them */}
           <Route exact path='/all-employees/:id'>
             <PublicEmployeeProfile />
           </Route>
-
         </Switch>
         <Footer />
       </BrowserRouter>
