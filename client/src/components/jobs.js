@@ -14,7 +14,9 @@ const AllJobs = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get('api/jobs/')
-        setJobs(data)
+        const dataArray = Object.values({ ...data })
+        const availableOnly = dataArray.filter(job => job.available === true) //only save available jobs
+        setJobs(availableOnly)
       } catch (error) {
         console.log(error)
       }
@@ -39,9 +41,6 @@ const AllJobs = () => {
       return regexSearch.test(job.title) && (filters.role === job.jobrole || filters.role === 'All')
     }))
   }, [filters, jobs])
-
-
-
 
   return (<>
     <div className="allJobsWrapper">

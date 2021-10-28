@@ -1,6 +1,8 @@
-import EmployeeCard from './employeeCard.js'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+
+import EmployeeCard from './employeeCard.js'
+import EmployeeFilters from './employeeFilters.js'
 
 const AllEmployees = () => {
 
@@ -19,18 +21,31 @@ const AllEmployees = () => {
     }
     getData()
   }, [])
-  // console.log( 'type of Employees: ', typeof Employees)
-  // console.log(employees, 'employees')
-  // <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-  // (filters.searchTerm !== '' ? searchMatches : sortedArray )
+
+
+  const [ filteredEmployees, setFilteredEmployees ] = useState([])
+  const [ filters, setFilters ] = useState({ searchTerm: '' })
+
+  const handleFilterChange = (event) => {
+    const newObj = { ...filters, [event.target.name]: event.target.value }
+    setFilters(newObj)
+  }
+  useEffect(() => {
+    const regexSearch = new RegExp(filters.searchTerm, 'i')
+    setFilteredEmployees(employees.filter(employee => {
+      return regexSearch.test(String(employee.firstname + ' ' + employee.lastname))
+    }))
+  }, [filters, employees])
+
   return (<>
     <div className="allEmployeesWrapper">
       <div id="aboveAllEmployeesGrid">
         <h1 id="allEmployeesTitle">All The Employees</h1>
         <h2 id="allEmployeesFlavour">Search for Employees to work at, or to review.</h2>
       </div>
+      <EmployeeFilters handleFilterChange={handleFilterChange} {...filters}/>
       <div className="allEmployeesGrid">
-        { employees.map(employee => { 
+        { ( filters.searchTerm !== '' ? filteredEmployees : employees).map(employee => { 
           return <EmployeeCard key={employee.id} { ...employee } />
         })}
       </div>
