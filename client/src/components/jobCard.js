@@ -14,6 +14,8 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   // const available = props.available
   const text = props.text
   const jobroleName = props.jobrole.jobrole
+  // console.log(props.jobrole, 'jobrole')
+  // console.log(props.jobrole.jobrole, 'jobrole.jobrole')
   const jobroleID = props.jobrole.id
   const image = props.image
   const Userprofiles = [ ...props.Userprofiles ]
@@ -106,7 +108,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       <img className="jobCardImage" src={image} alt="Job Image"></img>
       <div id="jobCardTitle">Title: {title}</div>
       <div className="jobCardLocRole">
-        location {location} jobrole {jobroleName} {jobroleID}
+        {location} - {jobroleName}
       </div>
       <div className="jobCardMin">
         Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>

@@ -23,7 +23,7 @@ const JobFilters = ({ handleFilterChange, role, searchTerm }) => {
         <select onChange={handleFilterChange} name="role" value={role}>
           <option value="All">All</option>
           { jobroles.map(job => { 
-            return <option key={job.id} value={String(`${job.id}`)}>{job.jobrole} {job.id}</option>
+            return <option key={job.id} value={`${job.jobrole}`}>{job.jobrole}</option>
           })}
         </select>
         <input onChange={handleFilterChange} name="searchTerm" value={searchTerm} placeholder=' search jobs'/>

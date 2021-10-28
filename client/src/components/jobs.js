@@ -38,7 +38,7 @@ const AllJobs = () => {
   useEffect(() => {
     const regexSearch = new RegExp(filters.searchTerm, 'i')
     setFilteredJobs(jobs.filter(job => {
-      return regexSearch.test(job.title) && (filters.role === job.jobrole || filters.role === 'All')
+      return regexSearch.test(job.title) && (filters.role === job.jobrole.jobrole || filters.role === 'All')
     }))
   }, [filters, jobs])
 
