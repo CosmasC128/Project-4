@@ -60,13 +60,13 @@ const EmployeeProfile = () => {
   const ownerUsername = ownerStuff.username
   
   const [ formData, setFormData ] = useState({
-    first_name: '',
+    firstname: '',
   })
   const [ formData2, setFormData2 ] = useState({
-    last_name: '',
+    lastname: '',
   })
   const [ formData3, setFormData3 ] = useState({
-    cover_letter: '',
+    coverletter: '',
   })
   const [ formData4, setFormData4 ] = useState({
     cv: '',
@@ -150,9 +150,9 @@ const EmployeeProfile = () => {
         {userData ? 
           <div className='d-flex text-center row'>
             <p>This is your profile</p>
-            <p>First Name: {userData.first_name ? userData.first_name : <span>Loading...</span>}</p><form onSubmit={handleSubmit} ><input type="text" name="first_name" placeholder="New First Name" onInput={handleChange}  value={formData.first_name} /><button>Update</button></form>
-            <p>Last Name: {userData.last_name ? userData.last_name : <span>Loading...</span>}</p><form onSubmit={handleSubmit2} ><input type="text" name="last_name" placeholder="New Last Name" onInput={handleChange2}  value={formData2.last_name} /><button>Update</button></form>
-            <p>COVER LETTER: {userData.cover_letter ? userData.cover_letter : <span>Loading...</span>}</p><form onSubmit={handleSubmit3} ><input type="text" name="cover_letter" placeholder="New First Name" onInput={handleChange3}  value={formData3.cover_letter} /><button>Update</button></form>
+            <p>First Name: {userData.firstname ? userData.firstname : <span>Loading...</span>}</p><form onSubmit={handleSubmit} ><input type="text" name="firstname" placeholder="New First Name" onInput={handleChange}  value={formData.firstname} /><button>Update</button></form>
+            <p>Last Name: {userData.lastname ? userData.lastname : <span>Loading...</span>}</p><form onSubmit={handleSubmit2} ><input type="text" name="lastname" placeholder="New Last Name" onInput={handleChange2}  value={formData2.lastname} /><button>Update</button></form>
+            <p>COVER LETTER: {userData.coverletter ? userData.coverletter : <span>Loading...</span>}</p><form onSubmit={handleSubmit3} ><input type="text" name="coverletter" placeholder="New First Name" onInput={handleChange3}  value={formData3.coverletter} /><button>Update</button></form>
             <p>CV: {userData.cv ? userData.cv : <span>Loading...</span>}</p><form onInput={handleSubmit4} ><input type="text" name="cv" placeholder="New First Name" onInput={handleChange4}  value={formData.cv} /><button>Update</button></form>
             <p>Email : {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>

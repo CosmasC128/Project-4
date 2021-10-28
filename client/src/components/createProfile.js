@@ -17,10 +17,10 @@ const CreateProfile = () => {
 
   // Inputs data to post for both
   const [ formData, setFormData ] = useState({
-    first_name: '',
-    last_name: '',
+    firstname: '',
+    lastname: '',
     location: '',
-    cover_letter: '',
+    coverletter: '',
     cv: '',
     title: '',
     description: '',
@@ -73,11 +73,11 @@ const CreateProfile = () => {
             <h3 id="regTitle">USER REGISTRATION</h3>
             <div className="form-field regField" >
               <label htmlFor="username" className="regLabel">First Name</label>
-              <input onInput={handleChange} className="regInputField" type="text" name="first_name" placeholder="First Name" value={formData.first_name} />
+              <input onInput={handleChange} className="regInputField" type="text" name="firstname" placeholder="First Name" value={formData.firstname} />
             </div>
             <div className="form-field regField">
               <label htmlFor="email" className="regLabel">Last Name</label>
-              <input onInput={handleChange} className="regInputField" type="text" name="last_name" placeholder="Last Name" value={formData.last_name}/>
+              <input onInput={handleChange} className="regInputField" type="text" name="lastname" placeholder="Last Name" value={formData.lastname}/>
             </div>
             <div className="form-field regField">
               <label htmlFor="password" className="regLabel">Location</label>
@@ -85,7 +85,7 @@ const CreateProfile = () => {
             </div>
             <div className="form-field regField">
               <label htmlFor="password_confirmation" className="regLabel">Cover Letter</label>
-              <textarea onInput={handleChange} className="regInputField" type="text" name="cover_letter" placeholder="Type your Cover Letter"  value={formData.cover_letter} />
+              <textarea onInput={handleChange} className="regInputField" type="text" name="coverletter" placeholder="Type your Cover Letter"  value={formData.coverletter} />
             </div>
             <div className="form-field regField">
               <label htmlFor="password_confirmation" className="regLabel">CV</label>
