@@ -17,9 +17,6 @@ const JobFilters = ({ handleFilterChange, role, searchTerm }) => {
     getData()
   }, [])
 
-  // console.log(jobroles)
-  // console.log(jobroles[0])
-
   return (
     <>
       <div className="jobFilterWrapper" style={{ marginBottom: '40px' }}>
