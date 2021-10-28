@@ -171,7 +171,7 @@ const PublicBusinessProfile = () => {
   return (
     <>
       {business.id ? 
-        <div>
+        <div className="publicBusinessProfileWrapper">
           <div>
             <h1>{title} </h1><br/>
             <div>{image} </div><br/>

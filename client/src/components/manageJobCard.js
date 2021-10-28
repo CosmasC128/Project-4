@@ -24,23 +24,6 @@ const ManageJobCard = (props) => {
   const Userprofiles = [ ...props.Userprofiles ]
   let availabilityText = ''
 
-  // ***  
-
-  // {
-  //   "id": 1,
-  // ***  "owner": 2,
-  // ***  "jobrole": 2,
-  //   "title": "Taco maker - Spicy Shack - south london location",
-  //   "location": "london",
-  //   "text": "10 pounds an hour, back breaking labour, bring a shovel",
-  //   "available": true,
-  // ***  "business": 2,
-  //  *** "Userprofiles": [
-  //     3,
-  //     4
-  //   ]
-  // }
-
   // *** CHANGE AVAILABILITY ~~~ UPDATE JOB ~~~ DELETE JOB
 
 

@@ -46,7 +46,7 @@ const AllJobs = () => {
     <div className="allJobsWrapper">
       <div id="aboveAllJobsGrid">
         <h1 id="allJobsTitle">All The Jobs</h1>
-        <h2 id="allJobsFlavour">Search for Jobs to work at, or to review.</h2>
+        <h2 id="allJobsFlavour">Search for Jobs by title or by job role</h2>
       </div>
       <JobFilters handleFilterChange={handleFilterChange} {...filters}/>
       <div className="allJobsGrid">

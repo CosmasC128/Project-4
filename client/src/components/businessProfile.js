@@ -91,7 +91,7 @@ const BusinessProfile = () => {
 
   return (
     <>
-      <div>
+      <div className="businessProfileWrapper">
         {bizInfo ? 
           <div className='d-flex row text-center'>
             <p >This is your profile</p>

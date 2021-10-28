@@ -105,15 +105,17 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   return (<>
     <div className="jobCardWrapper" id={'job' + String(id)}>
       <button id="expandJobCard" onClick={handleExpand}>VIEW</button>
-      <img className="jobCardImage" src={image} alt="Job Image"></img>
-      <div id="jobCardTitle">Title: {title}</div>
-      <div className="jobCardLocRole">
-        {location} - {jobroleName}
-      </div>
-      <div className="jobCardMin">
-        Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
-      </div>
-      <div id={`jobCardMax${id}`}>
+      <div className="jobCardMinData">
+        <img className="jobCardImage" src={image} alt="Job Image"></img>
+        <div id="jobCardTitle">Title: {title}</div>
+        <div className="jobCardLocRole">
+          {location} - {jobroleName}
+        </div>
+        <div className="jobCardBusinessLink">
+          Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
+        </div>
+      </div>  
+      <div className="jobCardMaxedData" id={`jobCardMax${id}`}>
         text: {text}
         <button id={`applyToJobCard${id}`} onClick={handleApply}>Apply</button>
       </div>

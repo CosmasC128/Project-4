@@ -175,53 +175,55 @@ const PublicEmployeeProfile = () => {
   return (
     <>
       {employee.id ? 
-        <><div className="d-flex p-2">
-          <div className="d-flex-row p-2"><h1><strong>Employee Profile Page</strong></h1></div><br />
-          <div className="d-flex-row p-2"> {firstName}  {lastName}</div> <br />
-          <div className="d-flex-column p-2">{image} 😊 </div> <br />
-          <div className="d-flex-column p-2">{location}🏡 </div> <br />
-          <div className="d-flex-column p-2">{avgRating}⭐️</div> <br />
-          <div className="d-flex p-2">{avgPresence}😃 {avgPassion} 😡 {avgPresentation} 👨🏻‍💼 {avgPunctuality} ⏰</div> <br />
-          <div className="d-flex p-2"><strong>{firstName}s CV {cv} 🧾</strong></div> <br />
-          <div className="d-flex p-2"><strong>Cover Letter: {coverLetter} 📄</strong></div> <br />
+        <div className="publicEmployeeProfileWrapper">
+          <div className="d-flex p-2">
+            <div className="d-flex-row p-2"><h1><strong>Employee Profile Page</strong></h1></div><br />
+            <div className="d-flex-row p-2"> {firstName}  {lastName}</div> <br />
+            <div className="d-flex-column p-2">{image} 😊 </div> <br />
+            <div className="d-flex-column p-2">{location}🏡 </div> <br />
+            <div className="d-flex-column p-2">{avgRating}⭐️</div> <br />
+            <div className="d-flex p-2">{avgPresence}😃 {avgPassion} 😡 {avgPresentation} 👨🏻‍💼 {avgPunctuality} ⏰</div> <br />
+            <div className="d-flex p-2"><strong>{firstName}s CV {cv} 🧾</strong></div> <br />
+            <div className="d-flex p-2"><strong>Cover Letter: {coverLetter} 📄</strong></div> <br />
+          </div>
+          <div>
+            <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
+              <label>Passion</label>
+              <select onChange={handleReviewChange} name="passion" value={formData.passion}>
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Presence</label>
+              <select onChange={handleReviewChange} name="presence" value={formData.presence}>
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Punctuality</label>
+              <select onChange={handleReviewChange} name="punctuality" value={formData.punctuality}>
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Presentation</label>
+              <select onChange={handleReviewChange} name="presentation" value={formData.presentation}>
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <button>Rate Employee</button>
+            </form>
+          </div>
         </div>
-        <div>
-          <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
-            <label>Passion</label>
-            <select onChange={handleReviewChange} name="passion" value={formData.passion}>
-              <option value="1">one star</option>
-              <option value="2">two star</option>
-              <option value="3">three star</option>
-              <option value="4">four star</option>
-              <option value="5">five star</option>
-            </select>
-            <label>Presence</label>
-            <select onChange={handleReviewChange} name="presence" value={formData.presence}>
-              <option value="1">one star</option>
-              <option value="2">two star</option>
-              <option value="3">three star</option>
-              <option value="4">four star</option>
-              <option value="5">five star</option>
-            </select>
-            <label>Punctuality</label>
-            <select onChange={handleReviewChange} name="punctuality" value={formData.punctuality}>
-              <option value="1">one star</option>
-              <option value="2">two star</option>
-              <option value="3">three star</option>
-              <option value="4">four star</option>
-              <option value="5">five star</option>
-            </select>
-            <label>Presentation</label>
-            <select onChange={handleReviewChange} name="presentation" value={formData.presentation}>
-              <option value="1">one star</option>
-              <option value="2">two star</option>
-              <option value="3">three star</option>
-              <option value="4">four star</option>
-              <option value="5">five star</option>
-            </select>
-            <button>Rate Employee</button>
-          </form>
-        </div></>
         : 
         <>Loading</>
       }

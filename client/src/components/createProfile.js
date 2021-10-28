@@ -64,7 +64,7 @@ const CreateProfile = () => {
 
 
   return (
-    <div className='d-flex justify-content-around m-5'>
+    <div className="profileCreationWrapper">
 
       {/* User creation */}
       <div className="regPage">

@@ -113,7 +113,7 @@ const EmployeeProfile = () => {
 
   return (
     <>
-      <div>
+      <div className="employeeProfileWrapper">
         {userData ? 
           <div className='d-flex text-center row'>
             <p>This is your profile</p>
