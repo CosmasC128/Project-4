@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
-import EmployeeCard from './employeeCard.js'
+import ApplicantCard from './applicantCard.js'
 
 const ManageJobCard = (props) => { 
 
@@ -120,6 +120,21 @@ const ManageJobCard = (props) => {
     getData()
   }, [])
 
+  const allApplicants = document.getElementById(`allApplicants${id}`)
+
+  const handleShow = () => {
+    if (allApplicants.style.display !== 'flex') {
+      allApplicants.style.display = 'flex'
+      if (Userprofiles.length < 1){
+        allApplicants.innerHTML = 'No Applicants Yet'
+      }
+    } else {
+      allApplicants.style.display = 'none'
+      allApplicants.innerHTML = ''
+    }
+  }
+
+
   return (<>
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
       <div className="manageJobTopHalf" style={{ display: 'flex' }}>
@@ -128,6 +143,7 @@ const ManageJobCard = (props) => {
           <button id={`submit${id}`} onClick={handleSubmit}>Update Job</button>
           <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
           <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
+          <button id={`applicants${id}`} onClick={ handleShow }>Show Applicants</button>
         </div>
         <div className="manageJobInfo" style={{ textAlign: 'center' }}>
           <img className="manageJobImage" src={image} alt="Job Image"></img>
@@ -139,9 +155,9 @@ const ManageJobCard = (props) => {
         </div>
       </div>
       <div className="manageBottomHalf" style={{ textAlign: 'center', marginBottom: '25px' }}>
-        <div className="allApplicantsGrid">
+        <div id={`allApplicants${id}`} style={{ display: 'none' }}>
           { applicants.map(applicant => { 
-            return <EmployeeCard key={applicant.id} { ...applicant } />
+            return <ApplicantCard key={applicant.id} { ...applicant } />
           })}
         </div>
       </div>
