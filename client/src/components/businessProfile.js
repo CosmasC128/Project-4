@@ -101,11 +101,7 @@ const BusinessProfile = () => {
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
             <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
-<<<<<<< HEAD
-=======
             <Link to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
-
->>>>>>> development
           </div>
           :
           <div>Loading...</div>
