@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-// import { getPayload } from '../helpers/auth.js'
+import { getPayload } from '../helpers/auth.js'
 
 const JobCard = (props) => { //pull in usersViewed array through here as well
   // console.log(props, 'props')
@@ -14,6 +14,8 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   // const available = props.available
   const text = props.text
   const jobroleName = props.jobrole.jobrole
+  // console.log(props.jobrole, 'jobrole')
+  // console.log(props.jobrole.jobrole, 'jobrole.jobrole')
   const jobroleID = props.jobrole.id
   const image = props.image
   const Userprofiles = [ ...props.Userprofiles ]
@@ -21,12 +23,14 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   // *** GET THE LOGGED IN USERS ID, USE IT TO FIND THEIR PROFILE
   // *** FIND THE USERPROFILE, SET THE PROFILE ID BASED ON IT
   // *** THIS IS LATER USED TO PUSH USERPROFILE ID INTO ARRAY ON JOB POST
-  const userID = 4 // getPayload().sub only add this in once I have a login functionality
+
   let profileID = 0
+  const userID = getPayload().sub
+
   const findProfileId = () => {
     for (let i = 0; i < usersArray.length; i++){
       if (usersArray[i].owner.id === userID){
-        profileID = usersArray[i].id
+        profileID = usersArray[i].id 
       }
     }
   }
@@ -43,8 +47,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     getData()
   }, [])
   findProfileId()
-  // console.log(profileID)
-
+  // console.log('checking profile and user id', profileID, userID, 'profile id then user id')
   // *** FIND ASSOCIATED BUSINESS TO LINK JOB POST TO BUSINESS PROFILE
   const [ business, setBusiness ] = useState([])
   useEffect(() => {
@@ -105,7 +108,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       <img className="jobCardImage" src={image} alt="Job Image"></img>
       <div id="jobCardTitle">Title: {title}</div>
       <div className="jobCardLocRole">
-        location {location} jobrole {jobroleName} {jobroleID}
+        {location} - {jobroleName}
       </div>
       <div className="jobCardMin">
         Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>

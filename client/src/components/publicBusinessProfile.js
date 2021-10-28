@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { getPayload } from '../helpers/helpers.js'
 
 const PublicBusinessProfile = () => {
 
-  // link from business card, or from job post, can rate the business here if have relationship
-  const { id } = useParams()
-  console.log(id)
-  const [ business, setBusiness ] = useState([])
+  // can get id from business card we are linked from.
+  // 
+
+  const { id } = useParams() //this is the ID of the BUSINESSES profile
+  const userID = getPayload().sub // this is the ID 
+  const [ business, setBusiness ] = useState([]) // getting the business profile for the page
+  let profileID = 0
 
   useEffect(() => {
     const getData = async () => {
@@ -20,21 +24,66 @@ const PublicBusinessProfile = () => {
     }
     getData()
   }, [id])
-    
-    
   
-  //const user = { ...business.owner }
+
+  const Userprofiles = business.Userprofiles
+
+  // get ALL the users, then find the userprofile for the currently logged in user
+
+  const findProfileId = () => {
+    for (let i = 0; i < usersArray.length; i++){
+      if (usersArray[i].owner.id === userID){
+        profileID = usersArray[i].id 
+      }
+    }
+  }
+
+  const [ usersArray, setUsersArray ] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/user-profile/')
+        setUsersArray(Object.values({ ...data }))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+  findProfileId()
+  // console.log(id, 'business id', userID, 'logged user id', profileID, 'user profile page ID')
+  const [ user, setUser ] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        if (profileID > 0){
+          const { data } = await axios.get(`/api/user-profile/${profileID}`)
+          setUser({ ...data })
+        } else {
+          console.log('not ready yet')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [usersArray])  
+
+  // console.log(user.id, 'user profile id', Userprofiles, 'users related to business profile')
+  
+  const verifyRelationship = () => {
+    if (user.id){
+      if (Userprofiles.includes(user.id)){
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+
   const description = business.description
   const image = business.image
-  //const jobPost = business.jobposts 
-  //const newJobPost = { ...jobPost }
-  //const text = newJobPost[0].text 
-  // const jobPost = business.jobposts
-  // const newJobPost = { ...jobPost }
-  // console.log('THIS ONE', newJobPost)
-  // //const text = newJobPost[0].text   
 
-  let businessID
   let title
   let location
   let employeeReviews
@@ -50,7 +99,6 @@ const PublicBusinessProfile = () => {
   let punishmentTotal = 0
   
   if (business.id){
-    businessID = business.id
     title = business.title
     location = business.location
     employeeReviews = business.employeereviews
@@ -83,30 +131,94 @@ const PublicBusinessProfile = () => {
       punishmentTotal += employeeReviews[m].punishment 
     }
     avgPunishment = (punishmentTotal / employeeReviews.length)
-
-
-    
-    console.log(businessID, 'business id')
-    console.log(payTotal, 'paytotal')
-    console.log(avgPay, 'avgpay')
-    console.log(employeeReviews.length, 'empreviewlength')
-  
-    
   }
   
+  // *** APPLY TO THE JOB
+
+  const reviewButton = document.getElementById('reviewBusiness')
+  
+  if (verifyRelationship() === true){
+    console.log('youve worked together and can review this business')
+    reviewButton.style.display = 'flex'
+  }
+  
+  // const [ formData, setFormData ] = useState({
+  //   userprofile: profileID,
+  //   passion: '',
+  //   presence: '',
+  //   punctuality: '',
+  //   presentation: ''
+  // })
+
+  const handleReview = async () => {
+    try {
+      console.log(profileID, 'has reviewed this business')
+      // Userprofiles.push(profileID)
+      // // console.log(Userprofiles, 'updated profiles after push')
+      // await axios.put(`api/jobposts/${id}/`, { 
+      //   owner: ownerID,
+      //   jobrole: jobroleID,
+      //   title: title,
+      //   location: location,
+      //   text: text,
+      //   business: businessID,
+      //   Userprofiles: Userprofiles,
+      // })
+      reviewButton.style.color = 'green'
+      reviewButton.disabled = 'true'
+    } catch (err) {
+      console.log(err)  
+    }
+  }
+
+  // const handleBizSubmit = async (event) => {
+  //   event.preventDefault()
+  //   try {
+  //     await axios.post('/api/business-profile/', formData,
+  //       {
+  //         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+  //       })
+  //     history.push('/profile/redirector')
+  //   } catch (err) {
+  //     console.log(err.message)
+  //   }
+  // }
+
+
+  // const jobCard = document.getElementById(`job${id}`)
+  // const jobCardMax = document.getElementById(`jobCardMax${id}`)
+  // if (jobCardMax){
+  //   jobCardMax.style.display = 'none'
+  // }
+  // const handleExpand = () => {
+  //   if (jobCard.style.color !== 'blue') {
+  //     jobCard.style.color = 'blue'
+  //     jobCardMax.style.display = 'flex'
+  //   } else {
+  //     jobCard.style.color = 'black'
+  //     jobCardMax.style.display = 'none'
+  //   }
+  // }
+
   return (
     <>
       {business.id ? 
         <div>
-          <h1>{title} </h1><br/>
-          <div>{image} </div><br/>
-          <div>Overall {avgRating}⭐️ </div> <br/>
-          <div>Pay Rating {avgPay ? avgPay : <span>0</span>}💰 </div> <br/>
-          <div>Pay Rating {avgPay}💰 Patience Rating {avgPatience}😇 Positivity Rating {avgPositivity}🎉 Punishment Rating {avgPunishment}💀  </div> <br/>
-          <div>Positivity Rating {avgPositivity}🎉 </div> <br/>
-          <div>Punishment Rating {avgPunishment}💀 </div> <br/>
-          <div>{description}</div> <br/>
-          <div> Location: {location}</div> <br/>
+          <div>
+            <h1>{title} </h1><br/>
+            <div>{image} </div><br/>
+            <div>Overall {avgRating}⭐️ </div> <br/>
+            <div>Pay Rating {avgPay ? avgPay : <span>0</span>}💰 </div> <br/>
+            <div>Pay Rating {avgPay}💰 Patience Rating {avgPatience}😇 Positivity Rating {avgPositivity}🎉 Punishment Rating {avgPunishment}💀  </div> <br/>
+            <div>Positivity Rating {avgPositivity}🎉 </div> <br/>
+            <div>Punishment Rating {avgPunishment}💀 </div> <br/>
+            <div>{description}</div> <br/>
+            <div> Location: {location}</div> <br/>
+          </div>
+          <div>
+            
+            <button id='reviewBusiness' style={{ display: 'none' }} onClick={handleReview}>Review Business</button>
+          </div>
         </div>
         : 
         <>Loading</>

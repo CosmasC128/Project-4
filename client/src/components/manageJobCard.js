@@ -188,6 +188,7 @@ const ManageJobCard = (props) => {
     }
   }
 
+<<<<<<< HEAD
 
 
 
@@ -195,6 +196,8 @@ const ManageJobCard = (props) => {
   // <input onChange={handleJobPost} type='text' name='location' value={jobFormData.location} placeholder='Change it here'>2</input>
   // <input onChange={handleJobPost} type='text' name='title' value={jobFormData.jobrole} placeholder='Change it here'>3</input>
 
+=======
+>>>>>>> d2e083c35dc85a94c483a8a65ce0248035cdc868
   return (<>
 
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
@@ -225,7 +228,7 @@ const ManageJobCard = (props) => {
       <div className="manageBottomHalf" style={{ textAlign: 'center', marginBottom: '25px' }}>
         <div id={`allApplicants${id}`} style={{ display: 'none' }}>
           { applicants.map(applicant => { 
-            return <ApplicantCard key={applicant.id} { ...applicant } />
+            return <ApplicantCard key={applicant.id} { ...{ ...applicant, businessID } }/>
           })}
         </div>
       </div>

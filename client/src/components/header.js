@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
 import { userIsAuthenticated } from '../helpers/helpers'
+// import { getPayload } from '../helpers/auth.js'
 
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
           {
             userIsAuthenticated() ? 
               <span>
-                <Link to="/profile/business/:id" id="navLink">Profile</Link>
+                <Link to="/profile/redirector" id="navLink">Profile</Link>
                 <span id="navLinkLogout" onClick={handleLogout}>Logout</span>
               </span>
               :
