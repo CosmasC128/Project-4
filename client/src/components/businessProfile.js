@@ -101,7 +101,6 @@ const BusinessProfile = () => {
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
             <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
-
           </div>
           :
           <div>Loading...</div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { getPayload } from '../helpers/helpers.js'
+import { useHistory } from 'react-router'
 
 const PublicBusinessProfile = () => {
 
@@ -12,6 +13,7 @@ const PublicBusinessProfile = () => {
   const userID = getPayload().sub // this is the ID 
   const [ business, setBusiness ] = useState([]) // getting the business profile for the page
   let profileID = 0
+  const history = useHistory()
 
   useEffect(() => {
     const getData = async () => {
@@ -142,30 +144,22 @@ const PublicBusinessProfile = () => {
     reviewButton.style.display = 'flex'
   }
   
-  // const [ formData, setFormData ] = useState({
-  //   userprofile: profileID,
-  //   passion: '',
-  //   presence: '',
-  //   punctuality: '',
-  //   presentation: ''
-  // })
+  const [ formData, setFormData ] = useState({
+    business: id,
+    passion: '',
+    presence: '',
+    punctuality: '',
+    presentation: '',
+  })
 
   const handleReview = async () => {
     try {
       console.log(profileID, 'has reviewed this business')
-      // Userprofiles.push(profileID)
-      // // console.log(Userprofiles, 'updated profiles after push')
-      // await axios.put(`api/jobposts/${id}/`, { 
-      //   owner: ownerID,
-      //   jobrole: jobroleID,
-      //   title: title,
-      //   location: location,
-      //   text: text,
-      //   business: businessID,
-      //   Userprofiles: Userprofiles,
-      // })
-      reviewButton.style.color = 'green'
-      reviewButton.disabled = 'true'
+      await axios.post('/api/empreview/', formData,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        })
+      history.push(`/api/all-businesses/${id}`)
     } catch (err) {
       console.log(err)  
     }
@@ -216,7 +210,6 @@ const PublicBusinessProfile = () => {
             <div> Location: {location}</div> <br/>
           </div>
           <div>
-            
             <button id='reviewBusiness' style={{ display: 'none' }} onClick={handleReview}>Review Business</button>
           </div>
         </div>
