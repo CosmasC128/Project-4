@@ -12,6 +12,7 @@ import PublicBusinessProfile from './components/publicBusinessProfile.js'
 import PublicEmployeeProfile from './components/publicEmployeeProfile.js'
 import BusinessProfile from './components/businessProfile.js'
 import EmployeeProfile from './components/employeeProfile.js'
+import ProfileRedirector from './components/profileRedirector.js'
 
 function App() {
 
@@ -20,7 +21,6 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          {/* registration CHANGE THE LINK, or login */}
           <Route exact path='/'> 
             <MainPage />
           </Route>
@@ -36,11 +36,14 @@ function App() {
           <Route exact path='/profile/business/:id/manage-jobs'>
             <ManageJobs />
           </Route>
+          <Route exact path="/profile/redirector">
+            <ProfileRedirector />
+          </Route>
           <Route exact path='/jobs'>
             <Jobs />
           </Route>
           <Route exact path='/all-businesses'>
-            <AllBusinesses />ß
+            <AllBusinesses />
           </Route>
           <Route exact path="/all-businesses/:id">
             <PublicBusinessProfile />

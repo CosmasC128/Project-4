@@ -28,7 +28,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   const findProfileId = () => {
     for (let i = 0; i < usersArray.length; i++){
       if (usersArray[i].owner.id === userID){
-        profileID = usersArray[i].id
+        profileID = usersArray[i].id 
       }
     }
   }
