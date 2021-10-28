@@ -43,7 +43,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     getData()
   }, [])
   findProfileId()
-  console.log(profileID)
+  // console.log(profileID)
 
   // *** FIND ASSOCIATED BUSINESS TO LINK JOB POST TO BUSINESS PROFILE
   const [ business, setBusiness ] = useState([])
@@ -105,7 +105,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       <img className="jobCardImage" src={image} alt="Job Image"></img>
       <div id="jobCardTitle">Title: {title}</div>
       <div className="jobCardLocRole">
-        location {location} jobrole {jobroleName}
+        location {location} jobrole {jobroleName} {jobroleID}
       </div>
       <div className="jobCardMin">
         Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>

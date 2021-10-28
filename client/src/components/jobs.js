@@ -1,6 +1,8 @@
-import JobCard from './jobCard.js'
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+
+import JobCard from './jobCard.js'
+import JobFilters from './jobFilters.js'
 
 const AllJobs = () => {
 
@@ -20,16 +22,36 @@ const AllJobs = () => {
     getData()
   }, [])
 
-  // <Filters id="matchesFilters" handleFilterChange={handleFilterChange} handleSortBy={handleSortBy} {...filters}/>
-  // (filters.searchTerm !== '' ? searchMatches : sortedArray )
+
+  const [ filteredJobs, setFilteredJobs ] = useState([])
+  const [ filters, setFilters ] = useState({ role: 'All', searchTerm: '' })
+
+  // Handle updates to select and text input
+  const handleFilterChange = (event) => {
+    const newObj = { ...filters, [event.target.name]: event.target.value }
+    setFilters(newObj)
+  }
+
+  // Listening for updates on Jobs and filters and updating filteredJobs
+  useEffect(() => {
+    const regexSearch = new RegExp(filters.searchTerm, 'i')
+    setFilteredJobs(jobs.filter(job => {
+      return regexSearch.test(job.title) && (filters.role === job.jobrole || filters.role === 'All')
+    }))
+  }, [filters, jobs])
+
+
+
+
   return (<>
     <div className="allJobsWrapper">
       <div id="aboveAllJobsGrid">
         <h1 id="allJobsTitle">All The Jobs</h1>
         <h2 id="allJobsFlavour">Search for Jobs to work at, or to review.</h2>
       </div>
+      <JobFilters handleFilterChange={handleFilterChange} {...filters}/>
       <div className="allJobsGrid">
-        { jobs.map(job => { 
+        { ( filters.role !== '' || filters.searchTerm !== '' ? filteredJobs : jobs).map(job => { 
           return <JobCard key={job.id} { ...job } />
         })}
       </div>
