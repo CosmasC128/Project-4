@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { getPayload } from '../helpers/helpers.js'
-import { useHistory } from 'react-router'
+import { getPayload, getTokenFromLocalStorage } from '../helpers/helpers.js'
+// import { useHistory } from 'react-router'
 
 const PublicBusinessProfile = () => {
 
@@ -13,7 +13,7 @@ const PublicBusinessProfile = () => {
   const userID = getPayload().sub // this is the ID 
   const [ business, setBusiness ] = useState([]) // getting the business profile for the page
   let profileID = 0
-  const history = useHistory()
+  // const history = useHistory()
 
   useEffect(() => {
     const getData = async () => {
@@ -53,7 +53,7 @@ const PublicBusinessProfile = () => {
     getData()
   }, [])
   findProfileId()
-  // console.log(id, 'business id', userID, 'logged user id', profileID, 'user profile page ID')
+
   const [ user, setUser ] = useState([])
   useEffect(() => {
     const getData = async () => {
@@ -70,8 +70,6 @@ const PublicBusinessProfile = () => {
     }
     getData()
   }, [usersArray])  
-
-  // console.log(user.id, 'user profile id', Userprofiles, 'users related to business profile')
   
   const verifyRelationship = () => {
     if (user.id){
@@ -137,7 +135,7 @@ const PublicBusinessProfile = () => {
   
   // *** APPLY TO THE JOB
 
-  const reviewButton = document.getElementById('reviewBusiness')
+  const reviewButton = document.getElementById('reviewBusinessForm')
   
   if (verifyRelationship() === true){
     console.log('youve worked together and can review this business')
@@ -145,54 +143,31 @@ const PublicBusinessProfile = () => {
   }
   
   const [ formData, setFormData ] = useState({
-    business: id,
-    passion: '',
-    presence: '',
-    punctuality: '',
-    presentation: '',
+    pay: '',
+    patience: '',
+    positivity: '',
+    punishment: '',
   })
 
-  const handleReview = async () => {
+  const handleReviewChange = (event) => {
+    const newObj = { ...formData, businessprofile: id, [event.target.name]: event.target.value }
+    
+    setFormData(newObj)
+  }
+
+  const handleReview = async (event) => {
+    event.preventDefault()
     try {
       console.log(profileID, 'has reviewed this business')
       await axios.post('/api/empreview/', formData,
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push(`/api/all-businesses/${id}`)
+      // history.push(`/api/all-businesses/${id}`)
     } catch (err) {
       console.log(err)  
     }
   }
-
-  // const handleBizSubmit = async (event) => {
-  //   event.preventDefault()
-  //   try {
-  //     await axios.post('/api/business-profile/', formData,
-  //       {
-  //         headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-  //       })
-  //     history.push('/profile/redirector')
-  //   } catch (err) {
-  //     console.log(err.message)
-  //   }
-  // }
-
-
-  // const jobCard = document.getElementById(`job${id}`)
-  // const jobCardMax = document.getElementById(`jobCardMax${id}`)
-  // if (jobCardMax){
-  //   jobCardMax.style.display = 'none'
-  // }
-  // const handleExpand = () => {
-  //   if (jobCard.style.color !== 'blue') {
-  //     jobCard.style.color = 'blue'
-  //     jobCardMax.style.display = 'flex'
-  //   } else {
-  //     jobCard.style.color = 'black'
-  //     jobCardMax.style.display = 'none'
-  //   }
-  // }
 
   return (
     <>
@@ -210,7 +185,41 @@ const PublicBusinessProfile = () => {
             <div> Location: {location}</div> <br/>
           </div>
           <div>
-            <button id='reviewBusiness' style={{ display: 'none' }} onClick={handleReview}>Review Business</button>
+            <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
+              <label>Pay</label>
+              <select onChange={handleReviewChange} name="pay" value={formData.pay} >
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Patience</label>
+              <select onChange={handleReviewChange} name="patience" value={formData.patience} >
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Positivity</label>
+              <select onChange={handleReviewChange} name="positivity" value={formData.positivity} >
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <label>Punishment</label>
+              <select onChange={handleReviewChange} name="punishment" value={formData.punishment} >
+                <option value="1">one star</option>
+                <option value="2">two star</option>
+                <option value="3">three star</option>
+                <option value="4">four star</option>
+                <option value="5">five star</option>
+              </select>
+              <button >Review Business</button>
+            </form>
           </div>
         </div>
         : 
