@@ -45,7 +45,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     getData()
   }, [])
   findProfileId()
-  console.log('checking profile and user id', profileID, userID, 'profile id then user id')
+  // console.log('checking profile and user id', profileID, userID, 'profile id then user id')
   // *** FIND ASSOCIATED BUSINESS TO LINK JOB POST TO BUSINESS PROFILE
   const [ business, setBusiness ] = useState([])
   useEffect(() => {

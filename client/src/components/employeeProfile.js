@@ -1,50 +1,23 @@
 import React, { useState, useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { getPayload, getTokenFromLocalStorage } from '../helpers/helpers'
+import { useHistory } from 'react-router-dom'
+import { getTokenFromLocalStorage } from '../helpers/helpers'
+import { useParams } from 'react-router'
 
 const EmployeeProfile = () => {
+  const { id } = useParams()
+  const history = useHistory()
+  
+  const pageID = id
 
-  // business can update profile info that's it. (put method only)
 
+  
   const [ userData, setUserInfo ] = useState([])
-  const [ allUserData, setAllUserData ] = useState([])
-  const userID = getPayload().sub
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get('/api/user-profile/'
-        )
-        setAllUserData(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getData()
-    
-  }, [])
-  console.log('Users',allUserData)
-  let pageID = ''
-
-  const findMatchingId = () => {
-    for (let i = 0; i < allUserData.length; i++){
-      if (allUserData[i].owner.id === userID){
-        pageID = allUserData[i].id
-      }
-    }
-  }
-
-  findMatchingId()
-
   
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`/api/user-profile/${pageID}`,
-          {
-            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-          })
+        const { data } = await axios.get(`/api/user-profile/${pageID}`)
         setUserInfo({ ...data })
       } catch (error) {
         console.log(error)
@@ -52,13 +25,13 @@ const EmployeeProfile = () => {
     }
     getData()
     
-  }, [pageID])
+  }, [])
 
   const ownerStuff = { ...userData.owner }
   const ownerID = ownerStuff.id
   const ownerEmail = ownerStuff.email
   const ownerUsername = ownerStuff.username
-  
+
   const [ formData, setFormData ] = useState({
     firstname: '',
   })
@@ -96,7 +69,7 @@ const EmployeeProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/employee/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
@@ -108,7 +81,7 @@ const EmployeeProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/employee/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
@@ -120,7 +93,7 @@ const EmployeeProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/employee/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
@@ -137,12 +110,6 @@ const EmployeeProfile = () => {
       console.log(err.message)
     }
   }
-
-  console.log('END PRODUCT', userData)
-  console.log('owner Email =>', ownerEmail)
-  console.log('Owner Username =>', ownerUsername)
-  console.log('ID =>', userID)
-  console.log('Page ID =>', pageID)
 
   return (
     <>

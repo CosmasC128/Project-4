@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react'
-// import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
-import { getPayload, getTokenFromLocalStorage } from '../helpers/helpers'
+import { getTokenFromLocalStorage } from '../helpers/helpers'
+import { useParams } from 'react-router'
 
 const BusinessProfile = () => {
-
-  // business can update profile info that's it. (put method only)
+  const { id } = useParams()
   const history = useHistory()
 
-  const [ allBizData, setAllBizData ] = useState([])
-  const [ bizInfo, setBizInfo ] = useState([])
+  const pageID = id
 
+  const [ bizInfo, setBizInfo ] = useState([])
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/business-profile/')
-        setAllBizData(data)
+        const { data } = await axios.get(`/api/business-profile/${pageID}`)
+        setBizInfo({ ...data })
       } catch (error) {
         console.log(error)
       }
@@ -25,42 +24,10 @@ const BusinessProfile = () => {
     
   }, [])
 
-  let pageID = ''
-
-  const findMatchingId = () => {
-    for (let i = 0; i < allBizData.length; i++){
-      if (allBizData[i].owner.id === userID){
-        pageID = allBizData[i].id
-      }
-    }
-  }
-  const userID = getPayload().sub
-  findMatchingId()
-
   const ownerStuff = { ...bizInfo.owner }
   const ownerID = ownerStuff.id
   const ownerEmail = ownerStuff.email
   const ownerUsername = ownerStuff.username
-
-
-  // UPDATE (POST)
-
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get(`/api/business-profile/${pageID}`,
-          {
-            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-          })
-        setBizInfo({ ...data })
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getData()
-    
-  }, [pageID])
 
   const [ formData, setFormData ] = useState({
     title: '',
@@ -92,7 +59,7 @@ const BusinessProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/business/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
@@ -104,7 +71,7 @@ const BusinessProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/business/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
@@ -116,19 +83,11 @@ const BusinessProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      history.push('/profile/business/:id')
+      history.push(`/profile/business/${pageID}`)
     } catch (err) {
       console.log(err.message)
     }
   }
-
-  console.log('Biz',bizInfo)
-  // console.log('ID =>', userID)
-  // console.log('ownerID =>', ownerID)
-  // console.log('Page ID =>', pageID)
-  // console.log('END PRODUCT', bizInfo)
-  // console.log('CHANGING DATA', formData)
-  
 
   return (
     <>

@@ -39,9 +39,9 @@ const ProfileRedirector = () => {
   let bigArray = []
   if (userProfiles.length > 0){
     bigArray = userProfiles.concat(businessProfiles)
-    console.log(userProfiles.length)
-    console.log(businessProfiles.length)
-    console.log(bigArray.length)
+    // console.log(userProfiles.length)
+    // console.log(businessProfiles.length)
+    // console.log(bigArray.length)
   }
 
   const findProfileId = () => {
@@ -55,9 +55,9 @@ const ProfileRedirector = () => {
         }
         history.push(`/profile/${profileType}/${profileID}`)
       }
-      if (profileID > 0){
-        console.log('profile ID found ', profileID)
-      }
+      // if (profileID > 0){
+      //   console.log('profile ID found ', profileID)
+      // }
     }
   }
 
