@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-const ApplicantCard = ({ businessID, id, firstname, lastname, location, coverletter, image }) => {
+const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, coverletter, image, Businessprofile }) => {
 
   // need to do a single business get on the user logged in
   // need to pass the business into a single click business PUT that updates the business's associated Userprofiles
   // const acceptButton = document.getElementById(`acceptApplicant${id}`)
-
+  console.log(Businessprofile, 'business profile')
   const [ business, setBusiness ] = useState([])
   
   useEffect(() => {
@@ -23,12 +23,13 @@ const ApplicantCard = ({ businessID, id, firstname, lastname, location, coverlet
     getData()
   }, [])
 
-  let owner = {}
   let Userprofiles = []
-  let ownerID = 0
+  let businessOwner = {}
+  let businessOwnerID = 0
+  const userOwnerID = owner.id
   if (business.id){
-    owner = business.owner
-    ownerID = owner.id
+    businessOwner = business.owner
+    businessOwnerID = businessOwner.id
     Userprofiles = business.Userprofiles
     // console.log(`Business ${business.id} has hired: `, Userprofiles)
   }
@@ -36,10 +37,18 @@ const ApplicantCard = ({ businessID, id, firstname, lastname, location, coverlet
   const handleAccept = async () => {
     try {
       console.log(`userprofile ${id} now works for ${businessID}!`)
-      Userprofiles.push(id)
+      Userprofiles.push(id) // id here is the ID of the userprofile being accepted by the business
       await axios.put(`/api/business-profile/${businessID}/`, { 
-        owner: ownerID,
+        owner: businessOwnerID, //owner id here has to be the owner of the business profile page
         Userprofiles: Userprofiles,
+      })
+      // above adds user ID into Userprofiles on the business profile page,
+      //below adds businessprofile ID into Businessprofile on the userprofile page
+      Businessprofile.push(business.id)
+      // console.log(Businessprofile, 'here is the business profile update')
+      await axios.put(`/api/user-profile/${id}/`, { 
+        owner: userOwnerID, //owner id here has to be the id of the owner of the userprofile page
+        Businessprofile: Businessprofile,
       })
     } catch (err) {
       console.log(err)  

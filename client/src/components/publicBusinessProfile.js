@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { getPayload, getTokenFromLocalStorage } from '../helpers/helpers.js'
-// import { useHistory } from 'react-router'
+import { useHistory } from 'react-router'
 
 const PublicBusinessProfile = () => {
 
@@ -13,7 +13,7 @@ const PublicBusinessProfile = () => {
   const userID = getPayload().sub // this is the ID 
   const [ business, setBusiness ] = useState([]) // getting the business profile for the page
   let profileID = 0
-  // const history = useHistory()
+  const history = useHistory()
 
   useEffect(() => {
     const getData = async () => {
@@ -155,15 +155,14 @@ const PublicBusinessProfile = () => {
     setFormData(newObj)
   }
 
-  const handleReview = async (event) => {
-    event.preventDefault()
+  const handleReview = async () => {
     try {
       console.log(profileID, 'has reviewed this business')
       await axios.post('/api/empreview/', formData,
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-      // history.push(`/api/all-businesses/${id}`)
+      history.push(`/api/all-businesses/${id}/`)
     } catch (err) {
       console.log(err)  
     }
