@@ -41,11 +41,7 @@ const CreateProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-<<<<<<< HEAD
-      history.push('employee/:id')
-=======
       history.push('/profile/redirector')
->>>>>>> d2e083c35dc85a94c483a8a65ce0248035cdc868
     } catch (err) {
       console.log(err.message)
     }
@@ -60,11 +56,7 @@ const CreateProfile = () => {
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         })
-<<<<<<< HEAD
-      history.push('business/:id')
-=======
       history.push('/profile/redirector')
->>>>>>> d2e083c35dc85a94c483a8a65ce0248035cdc868
     } catch (err) {
       console.log(err.message)
     }

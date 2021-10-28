@@ -43,15 +43,6 @@ const ManageJobCard = (props) => {
 
   // *** CHANGE AVAILABILITY ~~~ UPDATE JOB ~~~ DELETE JOB
 
-  const handleSubmit = async () => {
-    console.log(`submit job # ${id}`)
-  }
-
-  if (availability === true){
-    availabilityText = 'Available'
-  } else {
-    availabilityText = 'Unavailable'
-  }
 
   const handleAvailability = async () => {
     if (availabilityText === 'Available' ){
@@ -138,18 +129,30 @@ const ManageJobCard = (props) => {
     }
   }
   
-  const updateShower = document.getElementById('updating')
-  const updateShower2 = document.getElementById('updating2')
-  const updateShowerbtn = document.getElementById('updatingbtn')
+  const updateShower = document.getElementById(`updating${id}`)
+  const updateShower2 = document.getElementById(`updating2${id}`)
+  const updateShower3 = document.getElementById(`updating3${id}`)
+  const updateShower4 = document.getElementById(`updating4${id}`)
+  const updateShower5 = document.getElementById(`updating5${id}`)
+  const updateShower6 = document.getElementById(`updating6${id}`)
+  const updateShowerbtn = document.getElementById(`updatingbtn${id}`)
   
   const showUpdate = () => {
-    if (updateShower.style.display !== 'flex') {
+    if ((updateShower.style.display !== 'flex') && (updateShower3.style.display !== 'flex') && (updateShower5.style.display !== 'flex')) {
       updateShower2.style.display = 'flex'
+      updateShower3.style.display = 'flex'
+      updateShower4.style.display = 'flex'
+      updateShower5.style.display = 'flex'
+      updateShower6.style.display = 'flex'
       updateShower.style.display = 'flex'
       updateShowerbtn.innerHTML = 'Cancel'
     } else {
       updateShower.style.display = 'none'
       updateShower2.style.display = 'none'
+      updateShower3.style.display = 'none'
+      updateShower4.style.display = 'none'
+      updateShower5.style.display = 'none'
+      updateShower6.style.display = 'none'
       updateShowerbtn.innerHTML = 'Modify'
     }
   }
@@ -188,23 +191,13 @@ const ManageJobCard = (props) => {
     }
   }
 
-<<<<<<< HEAD
-
-
-
-  // <input onChange={handleJobPost} type='text' name='title' value={jobFormData.title} placeholder='Change it here'>1</input>
-  // <input onChange={handleJobPost} type='text' name='location' value={jobFormData.location} placeholder='Change it here'>2</input>
-  // <input onChange={handleJobPost} type='text' name='title' value={jobFormData.jobrole} placeholder='Change it here'>3</input>
-
-=======
->>>>>>> d2e083c35dc85a94c483a8a65ce0248035cdc868
   return (<>
 
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
       <div className="manageJobTopHalf" style={{ display: 'flex' }}>
         <div className="manageJobButtons" style={{ display: 'flex', flexDirection: 'column', width: '120px', marginRight: '10px' }}>
           <button id={`toggleAvailability${id}`} onClick={handleAvailability} style={ availability === true ? { color: 'black' } : { color: 'red' }}>{availability === true ? 'Available' : 'Unavailable'}</button>
-          <button id={`submit${id}`} onClick={handleSubmit}>Update Job</button>
+          <button id={`updatingbtn${id}`}  onClick={showUpdate}>Update Job</button>
           <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
           <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
           <button id={`applicants${id}`} onClick={ handleShow }>Show Applicants</button>
@@ -212,14 +205,14 @@ const ManageJobCard = (props) => {
         <div className="manageJobInfo" style={{ textAlign: 'center' }}>
           <div>
             <img className="manageJobImage" src={image} alt="Job Image"></img>
-            <div id="manageJobTitle">Title: {title}<form onSubmit={handleUpdateSub}><input id='updating' onChange={handleUpdate} style={{ display: 'none' }} type='text' name='title' value={formData.title} placeholder='Change it here'></input><button  style={{ display: 'none' }} id='updating2'>Update</button></form><button id='updatingbtn' onClick={showUpdate}>Modify</button></div>
+            <div id="manageJobTitle">Title: {title}<form onSubmit={handleUpdateSub}><input id={`updating${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='title' value={formData.title} placeholder='Change title here'></input><button  style={{ display: 'none' }} id={`updating2${id}`} >Update</button></form></div>
             <div className="manageJobLocRole">
-            Location: {location} 
+            Location: {location} <form onSubmit={handleUpdateSub}><input id={`updating3${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='location' value={formData.location} placeholder='Change loc here'></input><button  style={{ display: 'none' }} id={`updating4${id}`}>Update</button></form>
             </div>
             <div className="manageJobLocRole">
             Jobrole: {jobroleName}
             </div><div className="manageJobLocRole">
-            Job Description: {text}
+            Job Description: {text}<form onSubmit={handleUpdateSub}><input id={`updating5${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='text' value={formData.text} placeholder='Change text here'></input><button  style={{ display: 'none' }} id={`updating6${id}`}>Update</button></form>
             </div>
           
           </div>

@@ -51,6 +51,20 @@ const ManageJobs = () => {
       console.log(err.message)
     }
   }
+  const [ jobroles, setJobroles ] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/jobroles/')
+        setJobroles(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
   return (
     <>
       
@@ -60,6 +74,17 @@ const ManageJobs = () => {
         <div className='d-flex row ' >
           <label>Title<input onChange={handleJobPost} type='text' name='title' value={jobFormData.title} placeholder='Change it here'></input></label>
           <label>Jobrole<input onChange={handleJobPost} type='text' name='jobrole' value={jobFormData.jobrole} placeholder='Change it here'></input></label>
+
+
+          <select onChange={handleJobPost} name="jobrole" value={jobFormData.jobrole}>
+            <option value="All">All</option>
+            { jobroles.map(job => { 
+              return <option key={job.id} value={`${job.id}`}>{job.jobrole}</option>
+            })}
+          </select>
+
+
+
           <label>Location<input onChange={handleJobPost} type='text' name='location' value={jobFormData.location} placeholder='Change it here'></input></label>
           <label>Job description<input onChange={handleJobPost} type='text' name='text' value={jobFormData.text} placeholder='Change it here'></input></label>
         </div>
