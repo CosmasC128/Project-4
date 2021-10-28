@@ -32,3 +32,15 @@ const PublicBusinessProfile = () => {
 }
 
 export default PublicBusinessProfile
+
+
+
+//relevant to this page only (or userprofile page!)
+
+// let total = 0
+// console.log(jobposts[0].punishment)
+// for (let i = 0; i < jobposts.length; i++){
+//   total += employeeReviews[i].pay + employeeReviews[i].patience + employeeReviews[i].positivity + employeeReviews[i].punishment
+// }
+// const avgRating = total / (employeeReviews.length * 4)
+// console.log(avgRating)

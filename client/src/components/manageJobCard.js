@@ -1,11 +1,12 @@
-import React from 'react' //, { useState, useEffect }
+import React, { useState, useEffect } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
+import EmployeeCard from './employeeCard.js'
 
 const ManageJobCard = (props) => { 
 
   //need to re-render the page when availability changes
-
+  // *** JOB POST INFORMATION (CENTER OF PAGE)
   const id = props.id
   const ownerID = props.owner.id 
   const title = props.title
@@ -36,12 +37,11 @@ const ManageJobCard = (props) => {
   //   ]
   // }
 
-  // *** CHANGE AVAILABILITY AND SUBMIT FORM
+  // *** CHANGE AVAILABILITY ~~~ UPDATE JOB ~~~ DELETE JOB
 
   const handleSubmit = async () => {
     console.log(`submit job # ${id}`)
   }
-  // const jobAvailibilityToggler = document.getElementById(`availability${id}`)
 
   if (availability === true){
     availabilityText = 'Available'
@@ -55,8 +55,6 @@ const ManageJobCard = (props) => {
         availabilityText = 'Unavailable'
         document.getElementById(`toggleAvailability${id}`).innerHTML = availabilityText
         document.getElementById(`toggleAvailability${id}`).style.color = 'red'
-        console.log(`job # ${id} is now: `, availabilityText)
-        // availabilityButton.innerHTML = availabilityText
         await axios.put(`/api/jobposts/${id}/`, { 
           available: false,
           owner: ownerID,
@@ -75,8 +73,6 @@ const ManageJobCard = (props) => {
         availabilityText = 'Available'
         document.getElementById(`toggleAvailability${id}`).innerHTML = availabilityText
         document.getElementById(`toggleAvailability${id}`).style.color = 'black'
-        console.log(`job # ${id} is now: `, availabilityText)
-        // availabilityButton.innerHTML = availabilityText
         await axios.put(`/api/jobposts/${id}/`, { 
           available: true,
           owner: ownerID,
@@ -106,20 +102,48 @@ const ManageJobCard = (props) => {
     console.log(`You don't actually want to delete job # ${id}`)
   }
 
+  // *** DISPLAY USERS APPLIED TO JOB AND ACCEPT USERS
+
+  const [ applicants, setApplicants ] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get('/api/user-profile/')
+        const arr1 = Object.values({ ...data })
+        const applicantsOnly = arr1.filter(userprofile => Userprofiles.includes(userprofile.id))
+        setApplicants(applicantsOnly)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
   return (<>
-    <div className="manageJobWrapper" id={'job' + String(id)}>
-      <img className="manageJobImage" src={image} alt="Job Image"></img>
-      <div id="manageJobTitle">Title: {title}</div>
-      <div className="manageJobLocRole">
-        location: {location} - jobrole: {jobroleName}
+    <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
+      <div className="manageJobTopHalf" style={{ display: 'flex' }}>
+        <div className="manageJobButtons" style={{ display: 'flex', flexDirection: 'column', width: '120px', marginRight: '10px' }}>
+          <button id={`toggleAvailability${id}`} onClick={handleAvailability} style={ availability === true ? { color: 'black' } : { color: 'red' }}>{availability === true ? 'Available' : 'Unavailable'}</button>
+          <button id={`submit${id}`} onClick={handleSubmit}>Update Job</button>
+          <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
+          <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
+        </div>
+        <div className="manageJobInfo" style={{ textAlign: 'center' }}>
+          <img className="manageJobImage" src={image} alt="Job Image"></img>
+          <div id="manageJobTitle">Title: {title}</div>
+          <div className="manageJobLocRole">
+            location: {location} - jobrole: {jobroleName}
+          </div>
+          text: {text}
+        </div>
       </div>
-      <div className="manageJobMin">
-        text: {text}
-        <div id={`availability${id}`}>{availability === true ? 'Available' : 'Unavailable'}</div>
-        <button id={`toggleAvailability${id}`} onClick={handleAvailability}>Toggle Availability</button>
-        <button id={`submit${id}`} onClick={handleSubmit}>Submit Changes</button>
-        <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
-        <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
+      <div className="manageBottomHalf" style={{ textAlign: 'center', marginBottom: '25px' }}>
+        <div className="allApplicantsGrid">
+          { applicants.map(applicant => { 
+            return <EmployeeCard key={applicant.id} { ...applicant } />
+          })}
+        </div>
       </div>
     </div>
   </>)

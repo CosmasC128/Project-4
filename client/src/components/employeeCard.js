@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 
-const EmployeeCard = ({ id, firstname, lastname, location, coverletter, image }) => { //pull in usersViewed array through here as well
+const EmployeeCard = ({ id, firstname, lastname, location, coverletter, image }) => {
 
   return (<>
     <div className="employeeCardWrapper">
