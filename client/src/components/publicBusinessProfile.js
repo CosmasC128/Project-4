@@ -21,8 +21,18 @@ const PublicBusinessProfile = () => {
     getData()
   }, [id])
     
+    
+  
+  //const user = { ...business.owner }
   const description = business.description
   const image = business.image
+  //const jobPost = business.jobposts 
+  //const newJobPost = { ...jobPost }
+  //const text = newJobPost[0].text 
+  // const jobPost = business.jobposts
+  // const newJobPost = { ...jobPost }
+  // console.log('THIS ONE', newJobPost)
+  // //const text = newJobPost[0].text   
 
   let businessID
   let title
@@ -50,7 +60,6 @@ const PublicBusinessProfile = () => {
       total += employeeReviews[i].pay + employeeReviews[i].patience + employeeReviews[i].positivity + employeeReviews[i].punishment
     }
     avgRating = total / (employeeReviews.length * 4)
-
     //emp reviews regarding pay  
     for (let j = 0 ; j < employeeReviews.length; j++){
       payTotal += employeeReviews[j].pay 
@@ -75,10 +84,14 @@ const PublicBusinessProfile = () => {
     }
     avgPunishment = (punishmentTotal / employeeReviews.length)
 
+
+    
     console.log(businessID, 'business id')
     console.log(payTotal, 'paytotal')
     console.log(avgPay, 'avgpay')
     console.log(employeeReviews.length, 'empreviewlength')
+  
+    
   }
   
   return (
@@ -88,7 +101,7 @@ const PublicBusinessProfile = () => {
           <h1>{title} </h1><br/>
           <div>{image} </div><br/>
           <div>Overall {avgRating}⭐️ </div> <br/>
-          <div>Pay Rating {avgPay}💰 </div> <br/>
+          <div>Pay Rating {avgPay ? avgPay : <span>0</span>}💰 </div> <br/>
           <div>Pay Rating {avgPay}💰 Patience Rating {avgPatience}😇 Positivity Rating {avgPositivity}🎉 Punishment Rating {avgPunishment}💀  </div> <br/>
           <div>Positivity Rating {avgPositivity}🎉 </div> <br/>
           <div>Punishment Rating {avgPunishment}💀 </div> <br/>
