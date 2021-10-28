@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { getTokenFromLocalStorage } from '../helpers/helpers'
 import { useParams } from 'react-router'
 
@@ -101,6 +101,11 @@ const BusinessProfile = () => {
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
             <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
+<<<<<<< HEAD
+=======
+            <Link to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
+
+>>>>>>> development
           </div>
           :
           <div>Loading...</div>
