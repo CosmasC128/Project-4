@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 // import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { getPayload, getTokenFromLocalStorage } from '../helpers/helpers'
 
 const BusinessProfile = () => {
@@ -122,10 +122,10 @@ const BusinessProfile = () => {
     }
   }
 
-  console.log('Biz',bizInfo)
-  // console.log('ID =>', userID)
-  // console.log('ownerID =>', ownerID)
-  // console.log('Page ID =>', pageID)
+  // console.log('Biz',bizInfo)
+  console.log('ID =>', userID)
+  console.log('ownerID =>', ownerID)
+  console.log('Page ID =>', pageID)
   // console.log('END PRODUCT', bizInfo)
   // console.log('CHANGING DATA', formData)
   
@@ -142,6 +142,7 @@ const BusinessProfile = () => {
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
             <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
+            <Link to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
 
           </div>
           :
