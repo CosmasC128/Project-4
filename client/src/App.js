@@ -40,7 +40,7 @@ function App() {
             <Jobs />
           </Route>
           <Route exact path='/all-businesses'>
-            <AllBusinesses />
+            <AllBusinesses />ß
           </Route>
           <Route exact path="/all-businesses/:id">
             <PublicBusinessProfile />

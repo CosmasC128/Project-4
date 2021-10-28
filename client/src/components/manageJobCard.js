@@ -134,7 +134,6 @@ const ManageJobCard = (props) => {
     }
   }
 
-
   return (<>
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
       <div className="manageJobTopHalf" style={{ display: 'flex' }}>
@@ -157,7 +156,7 @@ const ManageJobCard = (props) => {
       <div className="manageBottomHalf" style={{ textAlign: 'center', marginBottom: '25px' }}>
         <div id={`allApplicants${id}`} style={{ display: 'none' }}>
           { applicants.map(applicant => { 
-            return <ApplicantCard key={applicant.id} { ...applicant } />
+            return <ApplicantCard key={applicant.id} { ...{ ...applicant, businessID } }/>
           })}
         </div>
       </div>
