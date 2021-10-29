@@ -95,7 +95,12 @@ const PublicEmployeeProfile = () => {
   // *** DON'T TOUCH WHILE DOING WILLIAM'S CODE
   let reconstructedImage = ''
   if (image){
-    reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+    console.log(id)
+    if (id === 36){
+      reconstructedImage = 'https://i.imgur.com/' + image.slice(-12)
+    } else {
+      reconstructedImage = 'https://i.imgur.com/c' + image.slice(-11)
+    }
   }
   console.log(image, 'image')
   console.log(reconstructedImage, 'reconstructed')
@@ -185,7 +190,7 @@ const PublicEmployeeProfile = () => {
     <>
       {employee.id ? 
         <div className="publicEmployeeProfileWrapper">
-          <div  id="regForm" style={{ fontSize: '22px' }}>
+          <div  id="regForm" style={{ fontSize: '22px', paddingBottom: '40px' }}>
             <div id='emptitle'><h1><strong>{firstName}&apos;s Profile Page</strong></h1></div> <br />
             <img src={reconstructedImage} style={{ width: '100%' }}></img>
             <div>👤 Name: {firstName ? <span>{firstName}</span> : <snap>No data!</snap>} {lastName ? <span>{lastName}</span> : <snap>No data!</snap>}</div> <br />
@@ -197,43 +202,51 @@ const PublicEmployeeProfile = () => {
             <div>⏰ Average Rating:{avgPunctuality ? <span>{avgPunctuality}</span> : <snap>No data!</snap>}</div> <br />
             <div>🧾 CV:{firstName ? <span>{firstName}</span> : <snap>No data!</snap>}&apos;s:  [{cv ? <span>{cv}</span> : <snap>No data!</snap>}]</div> <br />
             <div>📄 Cover Letter:{coverLetter ? <span>{coverLetter}</span> : <snap>No data!</snap>}</div> <br />
-          </div>
-          <div>
-            <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
-              <label>Passion</label>
-              <select onChange={handleReviewChange} name="passion" value={formData.passion}>
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
-              </select>
-              <label>Presence</label>
-              <select onChange={handleReviewChange} name="presence" value={formData.presence}>
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
-              </select>
-              <label>Punctuality</label>
-              <select onChange={handleReviewChange} name="punctuality" value={formData.punctuality}>
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
-              </select>
-              <label>Presentation</label>
-              <select onChange={handleReviewChange} name="presentation" value={formData.presentation}>
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
-              </select>
-              <button>Rate Employee</button>
-            </form>
+            <div>
+              <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none', flexDirection: 'row', height: '40px' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <label>Passion</label>
+                  <select onChange={handleReviewChange} name="passion" value={formData.passion}>
+                    <option value="1">one star</option>
+                    <option value="2">two star</option>
+                    <option value="3">three star</option>
+                    <option value="4">four star</option>
+                    <option value="5">five star</option>
+                  </select>
+                </div>  
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <label>Presence</label>
+                  <select onChange={handleReviewChange} name="presence" value={formData.presence}>
+                    <option value="1">one star</option>
+                    <option value="2">two star</option>
+                    <option value="3">three star</option>
+                    <option value="4">four star</option>
+                    <option value="5">five star</option>
+                  </select>
+                </div> 
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <label>Punctuality</label>
+                  <select onChange={handleReviewChange} name="punctuality" value={formData.punctuality}>
+                    <option value="1">one star</option>
+                    <option value="2">two star</option>
+                    <option value="3">three star</option>
+                    <option value="4">four star</option>
+                    <option value="5">five star</option>
+                  </select>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <label>Presentation</label>
+                  <select onChange={handleReviewChange} name="presentation" value={formData.presentation}>
+                    <option value="1">one star</option>
+                    <option value="2">two star</option>
+                    <option value="3">three star</option>
+                    <option value="4">four star</option>
+                    <option value="5">five star</option>
+                  </select>
+                </div>
+                <button>Rate Employee</button>
+              </form>
+            </div>
           </div>
         </div>
         : 

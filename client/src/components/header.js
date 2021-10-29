@@ -58,7 +58,7 @@ const Header = () => {
     getData()
   }, [])
 
-  console.log(business, 'business')
+  // console.log(business, 'business')
   const ownerStuff = { ...business.owner }
   const ownerUsername = ownerStuff.username
   useEffect(() => {

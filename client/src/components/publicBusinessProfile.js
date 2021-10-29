@@ -87,8 +87,8 @@ const PublicBusinessProfile = () => {
   if (image){
     reconstructedImage = 'https://i.imgur.com/' + image.slice(-7) + '.jpeg'
   }
-  console.log(image, 'image')
-  console.log(reconstructedImage, 'reconstructed')
+  // console.log(image, 'image')
+  // console.log(reconstructedImage, 'reconstructed')
 
   let title
   let location

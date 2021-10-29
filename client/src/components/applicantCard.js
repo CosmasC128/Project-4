@@ -8,11 +8,15 @@ const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, i
   // need to do a single business get on the user logged in
   // need to pass the business into a single click business PUT that updates the business's associated Userprofiles
   // const acceptButton = document.getElementById(`acceptApplicant${id}`)
-  console.log(Businessprofile, 'business profile')
+  console.log(image, 'image')
 
   let reconstructedImage = ''
   if (image){
-    reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+    if (id !== 36){
+      reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+    } else {
+      reconstructedImage = 'https://i.imgur.com/' + image.slice(-12)
+    }
   }
 
   const [ business, setBusiness ] = useState([])
