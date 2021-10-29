@@ -87,38 +87,46 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   }
 
   // *** MAXIMIZE JOB CARD TO APPLY
-  const jobCard = document.getElementById(`job${id}`)
-  const jobCardMax = document.getElementById(`jobCardMax${id}`)
-  if (jobCardMax){
-    jobCardMax.style.display = 'none'
+  const jobCardMax1 = document.getElementById(`jobCardMax1${id}`)
+  const jobCardMax2 = document.getElementById(`jobCardMax2${id}`)
+
+  if (jobCardMax1 && jobCardMax2){
+    jobCardMax1.style.display = 'none'
+    jobCardMax2.style.display = 'none'
   }
   const handleExpand = () => {
-    if (jobCard.style.color !== 'blue') {
-      jobCard.style.color = 'blue'
-      jobCardMax.style.display = 'flex'
+    if (jobCardMax1.style.display !== 'flex') {
+      jobCardMax1.style.display = 'flex'
+      jobCardMax2.style.display = 'flex'
     } else {
-      jobCard.style.color = 'black'
-      jobCardMax.style.display = 'none'
+      jobCardMax1.style.display = 'none'
+      jobCardMax2.style.display = 'none'
     }
   }
 
   return (<>
     <div className="jobCardWrapper" id={'job' + String(id)}>
-      <button id="expandJobCard" onClick={handleExpand}>VIEW</button>
-      <div className="jobCardMinData">
-        <img className="jobCardImage" src={image} alt="Job Image"></img>
-        <div id="jobCardTitle">Title: {title}</div>
-        <div className="jobCardLocRole">
-          {location} - {jobroleName}
+      <img className="jobCardImage" src={image} alt="Job Image"></img>
+      <div className="jobCardNotImage">
+        <div className="jobCardMinData">
+          <div id="jobCardTitle">{title}</div>
+          <div className="jobCardLocRole">
+            {location} - {jobroleName}
+          </div>
+          <div className="jobCardBusinessLink">
+            Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
+          </div>
+        </div>  
+        <div className="jobCardMaxedData" id={`jobCardMax1${id}`}>
+          {text}
         </div>
-        <div className="jobCardBusinessLink">
-          Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
-        </div>
+        <div className="jobCardButtons">
+          <button id="expandJobCard" onClick={handleExpand}>VIEW MORE</button>
+          <div className="jobCardMaxedData" id={`jobCardMax2${id}`}>
+            <button id={`applyToJobCard${id}`} onClick={handleApply}>Apply</button>
+          </div>
+        </div>  
       </div>  
-      <div className="jobCardMaxedData" id={`jobCardMax${id}`}>
-        text: {text}
-        <button id={`applyToJobCard${id}`} onClick={handleApply}>Apply</button>
-      </div>
     </div>
   </>)
 }

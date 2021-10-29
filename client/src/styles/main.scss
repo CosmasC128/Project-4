@@ -113,9 +113,35 @@ a:hover, Link:hover{
   border-radius: 3px;
   background-color: #bdbdbd;
   display: flex;
-  flex-direction: column;
-  // transition: transform 0.2s ease;
+  max-width: 450px;
+  transition: transform 0.2s ease;
 }
+
+.businessCardWrapper:hover, .employeeCardWrapper:hover, .applicantCardWrapper:hover{
+  border-color: #667dff;
+}
+
+#expandJobCard{
+  max-width: 80px;
+}
+
+.jobCardButtons{
+  display: flex;
+  justify-content: space-between;
+}
+
+.jobCardImage, .businessCardImage, .employeeCardImage{
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.jobCardNotImage, .businessCardNotImage, .employeeCardNotImage{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
 
 // *** TO USE
 
@@ -188,6 +214,7 @@ button{
   color: #fff;
   background-color: #212529;
   border-color: #212529;
+  padding: 4px;
 }
 
 button:hover{
@@ -196,12 +223,19 @@ button:hover{
   border-color: #b7c1fa;
 }
 
+
+
+
+.sureButton{
+  display: none;
+}
+
 // *** ~~~~~~~~~ FORMS ~~~~~~~~~~~~~~~~~~~
 
 #logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm{
   max-width: 50%;
-  min-width: 420px;
-  font-size: 24px;
+  min-width: 300px;
+  font-size: 20px;
   margin: 10px;
   border: 1px solid rgb(235, 235, 235);
   padding: 5px;
@@ -210,6 +244,12 @@ button:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+
+#logForm{
+  min-width: 300px;
 }
 
 #manageJobsPostJobsForm select{
@@ -235,7 +275,21 @@ button:hover{
 
 // *** ~~~~~~~~~ H ELEMENTS - TITLES ~~~~~~~~~~~~~~~~~~~
 
+// *** ~~~ header / title stuff
 
+h1, h2{
+  text-align: center;
+}
+
+#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #manageJobTitle, #applicantCardTitle, #businessCardTitle, #businessProfileTitle{
+  color: #fff;
+  background-color: #363d43;
+  border-color: #363d43;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 100%;
+  text-align: center;
+}
 
 // *** ~~~~~~~~~ IMAGES ~~~~~~~~~~~~~~~~~~~
 
@@ -314,7 +368,7 @@ button:hover{
   height: 50px;
 }
 #footer{
-  color: rgba(120, 120, 120, 0.81);
+  color: rgba(94, 94, 94, 0.886);
   font-size: 14px;
   margin-left: 100px;
   margin-right: 100px;
@@ -401,9 +455,7 @@ button:hover{
 
 // *** ~~~~~~~~~ MANAGE JOBS PAGE ~~~~~~~~~~~~~~~~~~~
 
-.sureButton{
-  display: none;
-}
+
 
 
 

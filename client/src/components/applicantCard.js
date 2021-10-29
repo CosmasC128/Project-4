@@ -58,7 +58,7 @@ const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, c
   return (<>
     <div className="applicantCardWrapper">
       <Link to={`/all-employees/${ id }`} id="applicantLink">
-        <div id="applicantCardTitle">Name: {firstname} {lastname}</div>
+        <div id="applicantCardTitle">{lastname}, {firstname}</div>
         <img className="applicantCardImage" src={image} alt="applicant Image"></img>
         <div className="applicantCardData">
           location {location} <br/>

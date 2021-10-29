@@ -26,7 +26,6 @@ const BusinessProfile = () => {
 
   const ownerStuff = { ...bizInfo.owner }
   const ownerID = ownerStuff.id
-  const ownerEmail = ownerStuff.email
   const ownerUsername = ownerStuff.username
 
   const [ formData, setFormData ] = useState({
@@ -94,13 +93,13 @@ const BusinessProfile = () => {
       <div className="businessProfileWrapper">
         {bizInfo ? 
           <div  id='businessProfileUpdateForm'>
-            <p >This is your profile</p>
-            <p>Name of Business: {bizInfo.title ? bizInfo.title : <span>Loading...</span>}</p><form onSubmit={handleSubmit}><input type="text" name="title" onInput={handleChange}  value={formData.title} placeholder="New Name of Business"/><button >Update</button></form>
+            <h2 id="businessProfileTitle">Welcome, {ownerUsername}!</h2>
+            <h3>Edit your profile data:</h3>
+            <p>Business Name: {bizInfo.title ? bizInfo.title : <span>Loading...</span>}</p>
+            <form onSubmit={handleSubmit}><input type="text" name="title" onInput={handleChange}  value={formData.title} placeholder="New Name of Business"/><button >Update</button></form>
             <p>Location of Business: {bizInfo.location ? bizInfo.location : <span>Loading...</span>}</p><form onSubmit={handleSubmit2}><input onInput={handleChange2} type="location" name="location" placeholder="New Location of Business" value={formData.location} /><button>Update</button></form>
             <p>Description of Business: {bizInfo.description ? bizInfo.description : <span>Loading...</span>}</p><form onSubmit={handleSubmit3}><input onInput={handleChange3} type="description" name="description" placeholder="New Description of Business" value={formData.description}/><button>Update</button></form>
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
-            <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
-            <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
             <Link id="manageJobPostsLink" to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
           </div>
           :
