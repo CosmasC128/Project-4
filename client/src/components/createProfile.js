@@ -70,7 +70,7 @@ const CreateProfile = () => {
       <div className="regPage">
         <div className="regBox" id="regBox">
           <form onSubmit={handleUserSubmit} id="regForm">
-            <h3 id="regTitle">USER REGISTRATION</h3>
+            <h3 id="regTitle">CREATE USER PROFILE</h3>
             <div className="form-field regField" >
               <label htmlFor="username" className="regLabel">First Name</label>
               <input onInput={handleChange} className="regInputField" type="text" name="firstname" placeholder="First Name" value={formData.firstname} />
@@ -100,7 +100,7 @@ const CreateProfile = () => {
       <div className="regPage">
         <div className="regBox" id="regBox">
           <form onSubmit={handleBizSubmit} id="regForm">
-            <h3 id="regTitle">BUSINESS REGISTRATION</h3>
+            <h3 id="regTitle">CREATE BUSINESS PROFILE</h3>
             <div className="form-field regField" >
               <label htmlFor="username" className="regLabel">Business Name</label>
               <input onInput={handleChange} className="regInputField" type="text" name="title" placeholder="Business Name" value={formData.title} />

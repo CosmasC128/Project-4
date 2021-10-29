@@ -93,7 +93,7 @@ const BusinessProfile = () => {
     <>
       <div className="businessProfileWrapper">
         {bizInfo ? 
-          <div className='d-flex row text-center'>
+          <div  id='businessProfileUpdateForm'>
             <p >This is your profile</p>
             <p>Name of Business: {bizInfo.title ? bizInfo.title : <span>Loading...</span>}</p><form onSubmit={handleSubmit}><input type="text" name="title" onInput={handleChange}  value={formData.title} placeholder="New Name of Business"/><button >Update</button></form>
             <p>Location of Business: {bizInfo.location ? bizInfo.location : <span>Loading...</span>}</p><form onSubmit={handleSubmit2}><input onInput={handleChange2} type="location" name="location" placeholder="New Location of Business" value={formData.location} /><button>Update</button></form>
@@ -101,7 +101,7 @@ const BusinessProfile = () => {
             <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
             <p>Email of Business: {ownerEmail ? ownerEmail : <span>Loading...</span>}</p>
             <p>Username of Business: {ownerUsername ? ownerUsername : <span>Loading...</span>}</p>  
-            <Link to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
+            <Link id="manageJobPostsLink" to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
           </div>
           :
           <div>Loading...</div>

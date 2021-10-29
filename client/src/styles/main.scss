@@ -33,6 +33,20 @@ a:hover, Link:hover{
   border-color: #667dff;
 }
 
+#manageJobPostsLink{
+  color: #fff;
+  background-color: #212529;
+  border-color: #212529;
+}
+
+#manageJobPostsLink:hover{
+  color: #667dff;
+  text-shadow: rgba(0, 0, 0, 0.694) 1px 1px;
+  border-color: #667dff;
+}
+
+// *** ~~~~~~ WRAPERS
+
 .allBusinessesWrapper, .allEmployeesWrapper, .allJobsWrapper, .mainPageWrapper, .profileCreationWrapper, .businessProfileWrapper, .employeeProfileWrapper, .publicEmployeeProfileWrapper, .publicBusinessProfileWrapper, .manageJobsPageWrapper{
   display: flex;
   flex-direction: column;
@@ -184,7 +198,23 @@ button:hover{
 
 // *** ~~~~~~~~~ FORMS ~~~~~~~~~~~~~~~~~~~
 
+#logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm{
+  max-width: 50%;
+  min-width: 420px;
+  font-size: 24px;
+  margin: 10px;
+  border: 1px solid rgb(235, 235, 235);
+  padding: 5px;
+  border-radius: 3px;
+  background-color: #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#manageJobsPostJobsForm select{
+  max-width: 80%;
+}
 
 // *** ~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~
 //jobFilterWrapper businessFilterWrapper employeeFilterWrapper
@@ -196,13 +226,11 @@ button:hover{
 .jobFilterWrapper input, .businessFilterWrapper input, .employeeFilterWrapper input{
   display: flex;
   text-align: center;
-  width: 60%;
 }
 
 .jobFilterWrapper select, .businessFilterWrapper select, .employeeFilterWrapper select{
   display: flex;
   text-align: center;
-  width: 20%;
 }
 
 // *** ~~~~~~~~~ H ELEMENTS - TITLES ~~~~~~~~~~~~~~~~~~~

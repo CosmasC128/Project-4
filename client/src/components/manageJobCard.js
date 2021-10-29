@@ -50,7 +50,7 @@ const ManageJobCard = (props) => {
       try {
         availabilityText = 'Available'
         document.getElementById(`toggleAvailability${id}`).innerHTML = availabilityText
-        document.getElementById(`toggleAvailability${id}`).style.color = 'black'
+        document.getElementById(`toggleAvailability${id}`).style.color = 'inherit'
         await axios.put(`/api/jobposts/${id}/`, { 
           available: true,
           owner: ownerID,
@@ -179,7 +179,7 @@ const ManageJobCard = (props) => {
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
       <div className="manageJobTopHalf" style={{ display: 'flex' }}>
         <div className="manageJobButtons" style={{ display: 'flex', flexDirection: 'column', width: '120px', marginRight: '10px' }}>
-          <button id={`toggleAvailability${id}`} onClick={handleAvailability} style={ availability === true ? { color: 'black' } : { color: 'red' }}>{availability === true ? 'Available' : 'Unavailable'}</button>
+          <button id={`toggleAvailability${id}`} onClick={handleAvailability} style={ availability === true ? { color: 'inherit' } : { color: 'red' }}>{availability === true ? 'Available' : 'Unavailable'}</button>
           <button id={`updatingbtn${id}`}  onClick={showUpdate}>Update Job</button>
           <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
           <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
