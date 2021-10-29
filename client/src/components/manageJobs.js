@@ -68,21 +68,36 @@ const ManageJobs = () => {
   return (
     <>
       <div className="manageJobsPageWrapper">
-        <p>Manage your Job Listings: </p>
-        <div>CREATE JOB POST</div>
-        <form onSubmit={handleJobSub} id="manageJobsPostJobsForm">
-          <label>Title<input onChange={handleJobPost} type='text' name='title' value={jobFormData.title} placeholder='Change it here'></input></label>
-          <label>Jobrole<input onChange={handleJobPost} type='text' name='jobrole' value={jobFormData.jobrole} placeholder='Change it here' style={{ display: 'none' }}></input></label>
-          <select onChange={handleJobPost} name="jobrole" value={jobFormData.jobrole}>
-            <option value="All">All</option>
-            { jobroles.map(job => { 
-              return <option key={job.id} value={`${job.id}`}>{job.jobrole}</option>
-            })}
-          </select>
-          <label>Location<input onChange={handleJobPost} type='text' name='location' value={jobFormData.location} placeholder='Change it here'></input></label>
-          <label>Job description<input onChange={handleJobPost} type='text' name='text' value={jobFormData.text} placeholder='Change it here'></input></label>
-          <button>CREATE POST</button>
-        </form>
+        <h1 >Manage your Job Listings</h1>
+        <div className="createJobPostWrap">
+          <h2 id="manageJobPostsTitle">CREATE JOB POST</h2>
+          <form onSubmit={handleJobSub} id="manageJobsPostJobsForm">
+            <div className="postJobPostInputWrappers">
+              <label>Title</label>
+              <input onChange={handleJobPost} type='text' name='title' value={jobFormData.title} placeholder='add title'></input>
+            </div>
+            <div className="postJobPostInputWrappers">
+              <label>Jobrole</label>
+              <input onChange={handleJobPost} type='text' name='jobrole' value={jobFormData.jobrole} placeholder='add job role' style={{ display: 'none' }}></input>
+              <select onChange={handleJobPost} name="jobrole" value={jobFormData.jobrole}>
+                <option value="">-</option>
+                { jobroles.map(job => { 
+                  return <option key={job.id} value={`${job.id}`}>{job.jobrole}</option>
+                })}
+              </select>
+            </div>
+            <div className="postJobPostInputWrappers">
+              <label>Location</label>
+              <input onChange={handleJobPost} type='text' name='location' value={jobFormData.location} placeholder='add location'></input>
+            </div>
+            <div className="postJobPostInputWrappers" id="postJobTextArea">
+              <label>Job description</label>
+              <textarea onChange={handleJobPost} type="text" name='text' value={jobFormData.text} placeholder='add job description'/>
+            </div>
+            <button>CREATE POST</button>
+          </form>
+        </div>
+        
         {business.id ? 
           <div className="jobcardWrapper">
             {jobposts.map(job => {

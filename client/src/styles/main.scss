@@ -259,7 +259,7 @@ form {
   flex-direction: column;
 }
 
-#toggleUserBusinessBox, #logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm{
+#toggleUserBusinessBox, #logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm, .createJobPostWrap{
   max-width: 50%;
   min-width: 300px;
   font-size: 20px;
@@ -321,6 +321,12 @@ form {
   width: 60px;
 }
 
+#manageJobsPostJobsForm{
+  border-color: #bdbdbd;
+  width: 100%;
+  margin: 0;
+}
+
 #logForm label, #regForm label, #businessProfileUpdateForm label, #manageJobsPostJobsForm label{
   flex-grow: 1;
 }
@@ -335,6 +341,32 @@ form {
 
 #manageJobsPostJobsForm select{
   max-width: 80%;
+}
+
+// .createJobPostWrap{
+
+// }
+
+.postJobPostInputWrappers{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.postJobPostInputWrappers input{
+  flex-grow: 5;
+  text-align: center;
+}
+
+.postJobPostInputWrappers select{
+  flex-grow: 5;
+  text-align: center;
+}
+
+#postJobTextArea{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 // *** ~~~~~~~~~ FILTERS ~~~~~~~~~~~~~~~~~~~
@@ -362,7 +394,7 @@ h1, h2{
   text-align: center;
 }
 
-#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #manageJobTitle, #applicantCardTitle, #businessCardTitle, #businessProfileTitle{
+#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #manageJobTitle, #applicantCardTitle, #businessCardTitle, #businessProfileTitle, #manageJobPostsTitle{
   color: #fff;
   background-color: #363d43;
   border-color: #363d43;
