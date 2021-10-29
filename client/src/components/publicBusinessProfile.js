@@ -178,50 +178,54 @@ const PublicBusinessProfile = () => {
     <>
       {business.id ? 
         <div className="publicBusinessProfileWrapper">
-          <div>
-            <img src={reconstructedImage} alt="changed" style={{ height: '300px' }}></img>
-            <h1>{title} </h1><br/>
-            <div>Overall {avgRating}⭐️ </div> <br/>
-            <div>Pay Rating {avgPay ? avgPay : <>0</>}💰 </div> <br/>
-            <div>Pay Rating {avgPay}💰 Patience Rating {avgPatience}😇 Positivity Rating {avgPositivity}🎉 Punishment Rating {avgPunishment}💀  </div> <br/>
-            <div>Positivity Rating {avgPositivity}🎉 </div> <br/>
-            <div>Punishment Rating {avgPunishment}💀 </div> <br/>
-            <div>{description}</div> <br/>
-            <div> Location: {location}</div> <br/>
+          <div  id="bizForm">
+            <h1 id='biztitle' className="loginPage">{title} </h1> 
+            <div style={{ display: 'flex', justifyContent: 'space-around', width: '100%' }}>
+              <div style={{ textAlign: 'center' }}>⭐️ Overall: {avgRating ? <span>{avgRating}</span> : <snap>No data!</snap>} </div> <br/>
+              <div style={{ textAlign: 'center' }}> Location: {location}</div> <br/>
+            </div>
+            <img src={reconstructedImage} style={{ width: '100%' }}></img>
+            <div style={{ width: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+              <div>💰 Pay Rating:  {avgPay ? <span>{avgPay}</span> : <span>No data!</span>} </div> <br/>
+              <div>😇 Patience Rating:  {avgPatience ? <span>{avgPatience}</span> : <span>No data!</span>} </div> <br/>
+              <div>🎉 Positivity Rating:  {avgPositivity ? <span>{avgPositivity}</span> : <span>No data!</span>} </div> <br/>
+              <div>💀 Punishment Rating:  {avgPunishment ? <span>{avgPunishment}</span> : <span>No data!</span>} </div> <br/>
+            </div>
+            <div style={{ textAlign: 'center', width: '100%' }}>Description:<br />{description}</div>
           </div>
           <div>
             <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
               <label>Pay</label>
               <select onChange={handleReviewChange} name="pay" value={formData.pay} >
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
+                <option value="1">⭐️</option>
+                <option value="2">⭐️⭐️</option>
+                <option value="3">⭐️⭐️⭐️</option>
+                <option value="4">⭐️⭐️⭐️⭐️</option>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
               </select>
               <label>Patience</label>
               <select onChange={handleReviewChange} name="patience" value={formData.patience} >
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
+                <option value="1">⭐️</option>
+                <option value="2">⭐️⭐️</option>
+                <option value="3">⭐️⭐️⭐️</option>
+                <option value="4">⭐️⭐️⭐️⭐️</option>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
               </select>
               <label>Positivity</label>
               <select onChange={handleReviewChange} name="positivity" value={formData.positivity} >
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
+                <option value="1">⭐️</option>
+                <option value="2">⭐️⭐️</option>
+                <option value="3">⭐️⭐️⭐️</option>
+                <option value="4">⭐️⭐️⭐️⭐️</option>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
               </select>
               <label>Punishment</label>
               <select onChange={handleReviewChange} name="punishment" value={formData.punishment} >
-                <option value="1">one star</option>
-                <option value="2">two star</option>
-                <option value="3">three star</option>
-                <option value="4">four star</option>
-                <option value="5">five star</option>
+                <option value="1">⭐️</option>
+                <option value="2">⭐️⭐️</option>
+                <option value="3">⭐️⭐️⭐️</option>
+                <option value="4">⭐️⭐️⭐️⭐️</option>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
               </select>
               <button >Review Business</button>
             </form>

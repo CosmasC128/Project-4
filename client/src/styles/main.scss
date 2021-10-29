@@ -275,7 +275,7 @@ form {
   flex-direction: column;
 }
 
-#toggleUserBusinessBox, #logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm, .createJobPostWrap{
+#toggleUserBusinessBox, #logForm, #bizForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm, .createJobPostWrap{
   max-width: 50%;
   min-width: 300px;
   font-size: 20px;
@@ -427,7 +427,7 @@ h1, h2{
   text-align: center;
 }
 
-#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #businessCardTitle, #businessProfileTitle, #manageJobPostsTitle{
+#logTitle, #regTitle, #jobCardTitle, #biztitle, #employeeCardTitle, #businessCardTitle, #businessProfileTitle, #manageJobPostsTitle, #emptitle{
   color: #fff;
   background-color: #363d43;
   border-color: #363d43;

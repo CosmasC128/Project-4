@@ -92,6 +92,7 @@ const PublicEmployeeProfile = () => {
   const cv = employee.cv
   const coverLetter = employee.coverletter
 
+  // *** DON'T TOUCH WHILE DOING WILLIAM'S CODE
   let reconstructedImage = ''
   if (image){
     reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
@@ -184,15 +185,18 @@ const PublicEmployeeProfile = () => {
     <>
       {employee.id ? 
         <div className="publicEmployeeProfileWrapper">
-          <div className="d-flex p-2">
-            <div className="d-flex-row p-2"><h1><strong>Employee Profile Page</strong></h1></div><br />
-            <div className="d-flex-row p-2"> {firstName}  {lastName}</div> <br />
-            <div className="d-flex-column p-2">{reconstructedImage} 😊 </div> <br />
-            <div className="d-flex-column p-2">{location}🏡 </div> <br />
-            <div className="d-flex-column p-2">{avgRating}⭐️</div> <br />
-            <div className="d-flex p-2">{avgPresence}😃 {avgPassion} 😡 {avgPresentation} 👨🏻‍💼 {avgPunctuality} ⏰</div> <br />
-            <div className="d-flex p-2"><strong>{firstName}s CV {cv} 🧾</strong></div> <br />
-            <div className="d-flex p-2"><strong>Cover Letter: {coverLetter} 📄</strong></div> <br />
+          <div  id="regForm" style={{ fontSize: '22px' }}>
+            <div id='emptitle'><h1><strong>{firstName}&apos;s Profile Page</strong></h1></div> <br />
+            <img src={reconstructedImage} style={{ width: '100%' }}></img>
+            <div>👤 Name: {firstName ? <span>{firstName}</span> : <snap>No data!</snap>} {lastName ? <span>{lastName}</span> : <snap>No data!</snap>}</div> <br />
+            <div>🏡 Location: {location ? <span>{location}</span> : <snap>No data!</snap>} </div> <br />
+            <div>⭐️ Average Rating:{avgRating ? <span>{avgRating}</span> : <snap>No data!</snap>}</div> <br />
+            <div>🙋 Average Presence: {avgPresence ? <span>{avgPresence}</span> : <snap>No data!</snap>}</div> <br />
+            <div>😍 Average Passion:{avgPassion ? <span>{avgPassion}</span> : <snap>No data!</snap>}</div> <br />
+            <div>👨🏻‍💼 Average Presentation:{avgPresentation ? <span>{avgPresentation}</span> : <snap>No data!</snap>}</div> <br />
+            <div>⏰ Average Rating:{avgPunctuality ? <span>{avgPunctuality}</span> : <snap>No data!</snap>}</div> <br />
+            <div>🧾 CV:{firstName ? <span>{firstName}</span> : <snap>No data!</snap>}&apos;s:  [{cv ? <span>{cv}</span> : <snap>No data!</snap>}]</div> <br />
+            <div>📄 Cover Letter:{coverLetter ? <span>{coverLetter}</span> : <snap>No data!</snap>}</div> <br />
           </div>
           <div>
             <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none' }}>
