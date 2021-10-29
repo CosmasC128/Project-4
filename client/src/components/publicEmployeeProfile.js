@@ -74,9 +74,12 @@ const PublicEmployeeProfile = () => {
   
   const verifyRelationship = () => {
     if (business.id){ // fix this here
+      console.log(business.id)
       if (Businessprofile.includes(business.id)){
+        console.log('true')
         return true
       } else {
+        console.log('false')
         return false
       }
     }
@@ -193,15 +196,15 @@ const PublicEmployeeProfile = () => {
           <div  id="regForm" style={{ fontSize: '22px', paddingBottom: '40px' }}>
             <div id='emptitle'><h1><strong>{firstName}&apos;s Profile Page</strong></h1></div> <br />
             <img src={reconstructedImage} style={{ width: '100%' }}></img>
-            <div>👤 Name: {firstName ? <span>{firstName}</span> : <snap>No data!</snap>} {lastName ? <span>{lastName}</span> : <snap>No data!</snap>}</div> <br />
-            <div>🏡 Location: {location ? <span>{location}</span> : <snap>No data!</snap>} </div> <br />
-            <div>⭐️ Average Rating:{avgRating ? <span>{avgRating}</span> : <snap>No data!</snap>}</div> <br />
-            <div>🙋 Average Presence: {avgPresence ? <span>{avgPresence}</span> : <snap>No data!</snap>}</div> <br />
-            <div>😍 Average Passion:{avgPassion ? <span>{avgPassion}</span> : <snap>No data!</snap>}</div> <br />
-            <div>👨🏻‍💼 Average Presentation:{avgPresentation ? <span>{avgPresentation}</span> : <snap>No data!</snap>}</div> <br />
-            <div>⏰ Average Rating:{avgPunctuality ? <span>{avgPunctuality}</span> : <snap>No data!</snap>}</div> <br />
-            <div>🧾 CV:{firstName ? <span>{firstName}</span> : <snap>No data!</snap>}&apos;s:  [{cv ? <span>{cv}</span> : <snap>No data!</snap>}]</div> <br />
-            <div>📄 Cover Letter:{coverLetter ? <span>{coverLetter}</span> : <snap>No data!</snap>}</div> <br />
+            <div>👤 Name: {firstName ? <span>{firstName}</span> : <span>No data!</span>} {lastName ? <span>{lastName}</span> : <span>No data!</span>}</div> <br />
+            <div>🏡 Location: {location ? <span>{location}</span> : <span>No data!</span>} </div> <br />
+            <div>⭐️ Average Rating:{avgRating ? <span>{avgRating}</span> : <span>No data!</span>}</div> <br />
+            <div>🙋 Average Presence: {avgPresence ? <span>{avgPresence}</span> : <span>No data!</span>}</div> <br />
+            <div>😍 Average Passion:{avgPassion ? <span>{avgPassion}</span> : <span>No data!</span>}</div> <br />
+            <div>👨🏻‍💼 Average Presentation:{avgPresentation ? <span>{avgPresentation}</span> : <span>No data!</span>}</div> <br />
+            <div>⏰ Average Rating:{avgPunctuality ? <span>{avgPunctuality}</span> : <span>No data!</span>}</div> <br />
+            <div>🧾 CV:{firstName ? <span>{firstName}</span> : <span>No data!</span>}&apos;s:  [{cv ? <span>{cv}</span> : <span>No data!</span>}]</div> <br />
+            <div>📄 Cover Letter:{coverLetter ? <span>{coverLetter}</span> : <span>No data!</span>}</div> <br />
             <div>
               <form id='reviewBusinessForm' onSubmit={handleReview} style={{ display: 'none', flexDirection: 'row', height: '40px' }}>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
