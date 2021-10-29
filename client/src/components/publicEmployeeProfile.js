@@ -91,6 +91,14 @@ const PublicEmployeeProfile = () => {
   const image = employee.image
   const cv = employee.cv
   const coverLetter = employee.coverletter
+
+  let reconstructedImage = ''
+  if (image){
+    reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+  }
+  console.log(image, 'image')
+  console.log(reconstructedImage, 'reconstructed')
+
   //! Using Let variables so we can redefine within the if statement for rendering in jsx
   let onerating
   let total = 0 
@@ -179,7 +187,7 @@ const PublicEmployeeProfile = () => {
           <div className="d-flex p-2">
             <div className="d-flex-row p-2"><h1><strong>Employee Profile Page</strong></h1></div><br />
             <div className="d-flex-row p-2"> {firstName}  {lastName}</div> <br />
-            <div className="d-flex-column p-2">{image} 😊 </div> <br />
+            <div className="d-flex-column p-2">{reconstructedImage} 😊 </div> <br />
             <div className="d-flex-column p-2">{location}🏡 </div> <br />
             <div className="d-flex-column p-2">{avgRating}⭐️</div> <br />
             <div className="d-flex p-2">{avgPresence}😃 {avgPassion} 😡 {avgPresentation} 👨🏻‍💼 {avgPunctuality} ⏰</div> <br />
