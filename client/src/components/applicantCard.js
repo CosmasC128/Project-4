@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, coverletter, image, Businessprofile }) => {
+const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, image, Businessprofile }) => {
 
   // need to do a single business get on the user logged in
   // need to pass the business into a single click business PUT that updates the business's associated Userprofiles
@@ -57,15 +57,18 @@ const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, c
 
   return (<>
     <div className="applicantCardWrapper">
-      <Link to={`/all-employees/${ id }`} id="applicantLink">
-        <div id="applicantCardTitle">{lastname}, {firstname}</div>
-        <img className="applicantCardImage" src={image} alt="applicant Image"></img>
-        <div className="applicantCardData">
-          location {location} <br/>
-          cover letter {coverletter}
+      <img className="applicantCardImage" src={image} alt="applicant Image"></img>
+      <div className="applicantNotImage">  
+        <div className="applicantOverButton">  
+          <Link to={`/all-employees/${ id }`} id="applicantLink">
+            <div id="applicantCardTitle">{lastname}, {firstname}</div>
+            <div className="applicantCardData">
+              {location}
+            </div>  
+          </Link>
         </div>  
-      </Link>  
-      <button id={`acceptApplicant${id}`} onClick={handleAccept}>Accept Applicant</button>
+        <button id={`acceptApplicant${id}`} onClick={handleAccept}>Hire!</button>
+      </div>  
     </div>
   </>)
 }

@@ -83,6 +83,7 @@ const PublicBusinessProfile = () => {
 
   const description = business.description
   const image = business.image
+  // console.log(image, 'business image')
 
   let title
   let location
@@ -173,6 +174,7 @@ const PublicBusinessProfile = () => {
       {business.id ? 
         <div className="publicBusinessProfileWrapper">
           <div>
+            <img src="" alt="QOWHJDOIQJWDIOJQWDIOJDWOIJDW"></img>
             <h1>{title} </h1><br/>
             <div>{image} </div><br/>
             <div>Overall {avgRating}⭐️ </div> <br/>

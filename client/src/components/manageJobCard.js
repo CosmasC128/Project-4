@@ -176,29 +176,29 @@ const ManageJobCard = (props) => {
 
   return (<>
 
-    <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'column' }}>
-      <div className="manageJobTopHalf" style={{ display: 'flex' }}>
-        <div className="manageJobButtons" style={{ display: 'flex', flexDirection: 'column', width: '120px', marginRight: '10px' }}>
+    <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'row' }}>
+      <div className="manageJobTopHalf">
+        <div className="manageJobInfo" style={{ textAlign: 'center' }}>
+          <img className="manageJobImage" src={image} alt="Job Image"></img>
+          <div className="manageJobNotImage">
+            <div id="manageJobTitle">{title}<form onSubmit={handleUpdateSub}><input id={`updating${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='title' value={formData.title} placeholder='Change title here'></input><button  style={{ display: 'none' }} id={`updating2${id}`} >Update</button></form></div>
+            <div className="manageJobLocRole">
+              {location} 
+              <form onSubmit={handleUpdateSub}><input id={`updating3${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='location' value={formData.location} placeholder='Change loc here'></input><button  style={{ display: 'none' }} id={`updating4${id}`}>Update</button></form>
+            </div>
+            <div className="manageJobLocRole">
+              {jobroleName}
+            </div><div className="manageJobLocRole">
+              {text}<form onSubmit={handleUpdateSub}><input id={`updating5${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='text' value={formData.text} placeholder='Change text here'></input><button  style={{ display: 'none' }} id={`updating6${id}`}>Update</button></form>
+            </div>
+          </div>
+        </div>
+        <div className="manageJobButtons">
           <button id={`toggleAvailability${id}`} onClick={handleAvailability} style={ availability === true ? { color: 'inherit' } : { color: 'red' }}>{availability === true ? 'Available' : 'Unavailable'}</button>
-          <button id={`updatingbtn${id}`}  onClick={showUpdate}>Update Job</button>
+          <button id={`updatingbtn${id}`}  onClick={showUpdate}>Update</button>
           <button id={`delete${id}`} onClick={handleDelete}>Delete</button>
           <button className="sureButton" id={`areYouSure${id}`} onClick={handleAreYouSure}>Are You Sure?</button>
-          <button id={`applicants${id}`} onClick={ handleShow }>Show Applicants</button>
-        </div>
-        <div className="manageJobInfo" style={{ textAlign: 'center' }}>
-          <div>
-            <img className="manageJobImage" src={image} alt="Job Image"></img>
-            <div id="manageJobTitle">Title: {title}<form onSubmit={handleUpdateSub}><input id={`updating${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='title' value={formData.title} placeholder='Change title here'></input><button  style={{ display: 'none' }} id={`updating2${id}`} >Update</button></form></div>
-            <div className="manageJobLocRole">
-            Location: {location} <form onSubmit={handleUpdateSub}><input id={`updating3${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='location' value={formData.location} placeholder='Change loc here'></input><button  style={{ display: 'none' }} id={`updating4${id}`}>Update</button></form>
-            </div>
-            <div className="manageJobLocRole">
-            Jobrole: {jobroleName}
-            </div><div className="manageJobLocRole">
-            Job Description: {text}<form onSubmit={handleUpdateSub}><input id={`updating5${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='text' value={formData.text} placeholder='Change text here'></input><button  style={{ display: 'none' }} id={`updating6${id}`}>Update</button></form>
-            </div>
-          
-          </div>
+          <button id={`applicants${id}`} onClick={ handleShow }>Applicants</button>
         </div>
       </div>
       <div className="manageBottomHalf" style={{ textAlign: 'center', marginBottom: '25px' }}>

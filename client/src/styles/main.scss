@@ -108,7 +108,7 @@ a:hover, Link:hover{
 
 // *** ~~~~~~~~~ CARDS ~~~~~~~~~~~~~~~~~~~
 
-.applicantCardWrapper, .businessCardWrapper, .jobCardWrapper, .employeeCardWrapper, .manageJobWrapper{
+.applicantCardWrapper, .businessCardWrapper, .jobCardWrapper, .employeeCardWrapper, .manageJobTopHalf{
   // width: 190px;
   // height: 190px;
   margin: 10px;
@@ -120,6 +120,22 @@ a:hover, Link:hover{
   max-width: 450px;
   transition: transform 0.2s ease;
 }
+.applicantCardWrapper{
+  display: flex;
+}
+.applicantNotImage{
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+// .applicantCardWrapper button{
+
+// }
+
+// .manageJobWrapper{
+
+// }
 
 .businessCardWrapper:hover, .employeeCardWrapper:hover, .applicantCardWrapper:hover{
   border-color: #667dff;
@@ -326,6 +342,23 @@ form {
   width: 100%;
   margin: 0;
 }
+.manageJobImage{
+  margin-right: 10px;
+}
+.manageJobTopHalf{
+  display: flex;
+  flex-direction: column;
+}
+.manageJobInfo{
+  display: flex;
+}
+.manageJobButtons{
+  display: flex;
+}
+
+// .manageBottomHalf{
+
+// }
 
 #logForm label, #regForm label, #businessProfileUpdateForm label, #manageJobsPostJobsForm label{
   flex-grow: 1;
@@ -394,7 +427,7 @@ h1, h2{
   text-align: center;
 }
 
-#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #manageJobTitle, #applicantCardTitle, #businessCardTitle, #businessProfileTitle, #manageJobPostsTitle{
+#logTitle, #regTitle, #jobCardTitle, #employeeCardTitle, #businessCardTitle, #businessProfileTitle, #manageJobPostsTitle{
   color: #fff;
   background-color: #363d43;
   border-color: #363d43;
