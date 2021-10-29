@@ -17,7 +17,6 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   // console.log(props.jobrole, 'jobrole')
   // console.log(props.jobrole.jobrole, 'jobrole.jobrole')
   const jobroleID = props.jobrole.id
-  const image = props.image
   const Userprofiles = [ ...props.Userprofiles ]
 
   // *** GET THE LOGGED IN USERS ID, USE IT TO FIND THEIR PROFILE
@@ -65,6 +64,15 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
     getData()
   }, [businessID])
 
+  console.log(business)
+  if (business){
+    console.log(business.image, 'business.image')
+  }
+  let reconstructedImage = ''
+  if (business.image){
+    reconstructedImage = 'https://i.imgur.com/' + (business.image).slice(-7) + '.jpeg'
+    console.log(reconstructedImage, 'reconstructed image job card')
+  }
   // *** APPLY TO THE JOB
 
   const applyButton = document.getElementById(`applyToJobCard${id}`)
@@ -109,7 +117,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
 
   return (<>
     <div className="jobCardWrapper" id={'job' + String(id)}>
-      <img className="jobCardImage" src={image} alt="Job Image"></img>
+      <img className="jobCardImage" src={reconstructedImage} style={{ height: '100px', width: '100px' }} alt="Job Image"></img>
       <div className="jobCardNotImage">
         <div className="jobCardMinData">
           <div id="jobCardTitle">{title}</div>

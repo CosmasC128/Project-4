@@ -20,12 +20,23 @@ const ManageJobCard = (props) => {
   const text = props.text
   const jobroleName = props.jobrole.jobrole
   const jobroleID = props.jobrole.id
-  const image = props.image
   const Userprofiles = [ ...props.Userprofiles ]
   let availabilityText = ''
 
   // *** CHANGE AVAILABILITY ~~~ UPDATE JOB ~~~ DELETE JOB
 
+  const [ business, setBusiness ] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const { data } = await axios.get(`/api/business-profile/${businessID}/`)
+        setBusiness({ ...data })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
 
   const handleAvailability = async () => {
     if (availabilityText === 'Available' ){
@@ -174,12 +185,22 @@ const ManageJobCard = (props) => {
     }
   }
 
+  // console.log(business)
+  if (business){
+    console.log(business.image, 'business.image')
+  }
+  let reconstructedImage = ''
+  if (business.image){
+    reconstructedImage = 'https://i.imgur.com/' + (business.image).slice(-7) + '.jpeg'
+    console.log(reconstructedImage, 'reconstructed image job card')
+  }
+
   return (<>
 
     <div className="manageJobWrapper" id={'job' + String(id)} style={{ display: 'flex', flexDirection: 'row' }}>
       <div className="manageJobTopHalf">
         <div className="manageJobInfo" style={{ textAlign: 'center' }}>
-          <img className="manageJobImage" src={image} alt="Job Image"></img>
+          <img className="manageJobImage" src={reconstructedImage} style={{ height: '100px', width: '100px' }} alt="Job Image"></img>
           <div className="manageJobNotImage">
             <div id="manageJobTitle">{title}<form onSubmit={handleUpdateSub}><input id={`updating${id}`} onChange={handleUpdate} style={{ display: 'none' }} type='text' name='title' value={formData.title} placeholder='Change title here'></input><button  style={{ display: 'none' }} id={`updating2${id}`} >Update</button></form></div>
             <div className="manageJobLocRole">

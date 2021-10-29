@@ -166,5 +166,17 @@
     "owner": 14,
     "Userprofiles": []
   }
+},
+{
+  "model": "Businessprofile.businessprofile",
+  "pk": 15,
+  "fields": {
+    "title": "Whaling",
+    "location": "Boston",
+    "description": "Japanese Food",
+    "image": "https://i.imgur.com/fl6diWV",
+    "owner": 24,
+    "Userprofiles": []
+  }
 }
 ]

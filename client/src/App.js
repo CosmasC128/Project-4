@@ -15,6 +15,13 @@ import EmployeeProfile from './components/employeeProfile.js'
 import ProfileRedirector from './components/profileRedirector.js'
 
 function App() {
+  //demologin 1
+  //cosmas@cosmas
+  //password123!*tree
+  
+  //demologin 2
+  //whaling@whaling
+  //password123!*tree
 
   return (
     <>
