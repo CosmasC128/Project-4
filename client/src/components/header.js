@@ -25,17 +25,18 @@ const Header = () => {
         <Link to="/jobs" id="navLink">Jobs</Link>
         <Link to="/all-businesses" id="navLink">Businesses</Link>
         <Link to="/all-employees" id="navLink">Employees</Link>
-        <div>
-          {
-            userIsAuthenticated() ? 
-              <span>
-                <Link to="/profile/redirector" id="navLink">Profile</Link>
-                <span id="navLinkLogout" onClick={handleLogout}>Logout</span>
-              </span>
-              :
-              <span> </span>
-          }
-        </div>
+        {
+          userIsAuthenticated() ? 
+            <>
+              <Link to="/profile/redirector" id="navLink">Profile</Link>
+              <span id="navLinkLogout" onClick={handleLogout}>Logout</span>
+            </>
+            :
+            <>
+              <Link to="/" id="navLink">Login/Register</Link>
+              <Link to="/profile/creation" id="navLink">Profile Creation</Link>
+            </>
+        }
       </div>
     </div>
   )

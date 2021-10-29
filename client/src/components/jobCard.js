@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { getPayload } from '../helpers/auth.js'
+import { getPayload, userIsAuthenticated } from '../helpers/auth.js'
 
 const JobCard = (props) => { //pull in usersViewed array through here as well
   // console.log(props, 'props')
@@ -25,7 +25,10 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   // *** THIS IS LATER USED TO PUSH USERPROFILE ID INTO ARRAY ON JOB POST
 
   let profileID = 0
-  const userID = getPayload().sub
+  let userID = 0
+  if (userIsAuthenticated()){
+    userID = getPayload().sub
+  }
 
   const findProfileId = () => {
     for (let i = 0; i < usersArray.length; i++){
@@ -110,11 +113,18 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
       <div className="jobCardNotImage">
         <div className="jobCardMinData">
           <div id="jobCardTitle">{title}</div>
-          <div className="jobCardLocRole">
-            {location} - {jobroleName}
-          </div>
-          <div className="jobCardBusinessLink">
-            Posted By <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
+          <div className="jobCardSubheading">
+            <div>
+              {location} 
+            </div>
+            <div>-</div>
+            <div>
+              {jobroleName}
+            </div>
+            <div>-</div>
+            <div className="jobCardBusinessLink">
+              <Link to={`/all-businesses/${businessID}`} id="jobCardBusinessLink">{business.title}</Link> <br/>
+            </div>
           </div>
         </div>  
         <div className="jobCardMaxedData" id={`jobCardMax1${id}`}>
@@ -123,7 +133,11 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
         <div className="jobCardButtons">
           <button id="expandJobCard" onClick={handleExpand}>VIEW MORE</button>
           <div className="jobCardMaxedData" id={`jobCardMax2${id}`}>
-            <button id={`applyToJobCard${id}`} onClick={handleApply}>Apply</button>
+            { userIsAuthenticated() ? 
+              <button id={`applyToJobCard${id}`} onClick={handleApply}>Apply</button> 
+              :
+              <></>
+            }
           </div>
         </div>  
       </div>  
