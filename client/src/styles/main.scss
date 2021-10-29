@@ -37,6 +37,10 @@ a:hover, Link:hover{
   color: #fff;
   background-color: #212529;
   border-color: #212529;
+  padding: 5px;
+  margin-top: 15px;
+  width: 100%;
+  text-align: center;
 }
 
 #manageJobPostsLink:hover{
@@ -97,7 +101,7 @@ a:hover, Link:hover{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 80vw;
+  max-width: 90vw;
   min-width: 420px;
 }
 
@@ -229,10 +233,13 @@ a:hover, Link:hover{
 // *** ~~~~~~~~~ BUTTONS ~~~~~~~~~~~~~~~~~~~
 
 button{
+  font-size: 20px;
+  font-weight: bolder;
   color: #fff;
   background-color: #212529;
   border-color: #212529;
   padding: 4px;
+  width: 100%;
 }
 
 button:hover{
@@ -241,16 +248,18 @@ button:hover{
   border-color: #b7c1fa;
 }
 
-
-
-
 .sureButton{
   display: none;
 }
 
 // *** ~~~~~~~~~ FORMS ~~~~~~~~~~~~~~~~~~~
 
-#logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm{
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+#toggleUserBusinessBox, #logForm, #regForm, #businessProfileUpdateForm, #manageJobsPostJobsForm{
   max-width: 50%;
   min-width: 300px;
   font-size: 20px;
@@ -261,10 +270,64 @@ button:hover{
   background-color: #bdbdbd;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
+  justify-content: space-between;
 }
 
+.formLabelInputWrap{
+  width: 100%;
+  display: flex;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
 
+#formLabelInputWrapTextareaCV, #formLabelInputWrapTextareaCL{
+  display: flex;
+  flex-direction: column;
+}
+
+#businessProfileUpdateForm{
+  align-items: center;
+  min-width: 420px;
+  width: 33%;
+}
+
+.updateBusinessProfileForms{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#updateBusinessProfileInnerBox{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+}
+#updateBusinessProfileInnerBox p{
+  margin: 0;
+}
+#updateBusinessProfileInnerBox form{
+  margin-bottom: 10px;
+}
+
+#businessProfileUpdateForm input{
+  flex-grow: 5;
+}
+
+.updateBusinessButton{
+  width: 60px;
+}
+
+#logForm label, #regForm label, #businessProfileUpdateForm label, #manageJobsPostJobsForm label{
+  flex-grow: 1;
+}
+
+#logForm input, #regForm input, #businessProfileUpdateForm input, #manageJobsPostJobsForm input{
+  flex-grow: 4;
+}
 
 #logForm{
   min-width: 300px;
@@ -388,7 +451,7 @@ h1, h2{
 }
 #footer{
   color: rgba(94, 94, 94, 0.886);
-  font-size: 14px;
+  font-size: 20px;
   margin-left: 100px;
   margin-right: 100px;
   height: 50px;
@@ -466,7 +529,15 @@ h1, h2{
 
 // *** ~~~~~~~~~ PROFILE CREATION ~~~~~~~~~~~~~~~~~~~
 
-
+#toggleUserBusinessBox{
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 
 // *** ~~~~~~~~~ PRIVATE BUSINESS PROFILE ~~~~~~~~~~~~~~~~~~~
 

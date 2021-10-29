@@ -77,11 +77,11 @@ const MainPage = () => {
             <div className="logBox" id="logBox">
               <form id="logForm" onSubmit={handleLogSubmit}>
                 <h3 id="logTitle">LOGIN</h3>
-                <div className="form-field logField">
+                <div className="formLabelInputWrap">
                   <label htmlFor="email" className="logLabel">Email</label>
                   <input onInput={handleChange} type="email" name="email" placeholder="Email" value={formData.email}/>
                 </div>
-                <div className="form-field logField">
+                <div className="formLabelInputWrap">
                   <label htmlFor="password" className="logLabel">Password</label>
                   <input onInput={handleChange} type="password" name="password" placeholder="Password" value={formData.password} />
                 </div>
@@ -95,19 +95,19 @@ const MainPage = () => {
           <div className="regBox" id="regBox">
             <form onSubmit={handleRegSubmit} id="regForm">
               <h3 id="regTitle">REGISTRATION </h3>
-              <div className="form-field regField" >
+              <div className="formLabelInputWrap" >
                 <label htmlFor="username" className="regLabel">Username</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="username" placeholder="Username" value={formData.username} />
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="email" className="regLabel">Email</label>
                 <input onInput={handleChange} className="regInputField" type="email" name="email" placeholder="Email" value={formData.email}/>
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="password" className="regLabel">Password</label>
                 <input onInput={handleChange} className="regInputField" type="password" name="password" placeholder="Password" value={formData.password} />
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="password_confirmation" className="regLabel">Confirmation</label>
                 <input onInput={handleChange} className="regInputField" type="password" name="password_confirmation" placeholder="Password Confirmation"  value={formData.password_confirmation} />
               </div>

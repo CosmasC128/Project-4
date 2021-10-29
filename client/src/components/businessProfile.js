@@ -95,11 +95,13 @@ const BusinessProfile = () => {
           <div  id='businessProfileUpdateForm'>
             <h2 id="businessProfileTitle">Welcome, {ownerUsername}!</h2>
             <h3>Edit your profile data:</h3>
-            <p>Business Name: {bizInfo.title ? bizInfo.title : <span>Loading...</span>}</p>
-            <form onSubmit={handleSubmit}><input type="text" name="title" onInput={handleChange}  value={formData.title} placeholder="New Name of Business"/><button >Update</button></form>
-            <p>Location of Business: {bizInfo.location ? bizInfo.location : <span>Loading...</span>}</p><form onSubmit={handleSubmit2}><input onInput={handleChange2} type="location" name="location" placeholder="New Location of Business" value={formData.location} /><button>Update</button></form>
-            <p>Description of Business: {bizInfo.description ? bizInfo.description : <span>Loading...</span>}</p><form onSubmit={handleSubmit3}><input onInput={handleChange3} type="description" name="description" placeholder="New Description of Business" value={formData.description}/><button>Update</button></form>
-            <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
+            <div id="updateBusinessProfileInnerBox">
+              <p>Business Name: {bizInfo.title ? bizInfo.title : <span>Loading...</span>}</p>
+              <form className="updateBusinessProfileForms" onSubmit={handleSubmit}><input type="text" name="title" onInput={handleChange}  value={formData.title} placeholder="New Name of Business"/><button className="updateBusinessButton">Update</button></form>
+              <p>Location of Business: {bizInfo.location ? bizInfo.location : <span>Loading...</span>}</p><form className="updateBusinessProfileForms" onSubmit={handleSubmit2}><input onInput={handleChange2} type="location" name="location" placeholder="New Location of Business" value={formData.location} /><button className="updateBusinessButton">Update</button></form>
+              <p>Description of Business: {bizInfo.description ? bizInfo.description : <span>Loading...</span>}</p><form className="updateBusinessProfileForms" onSubmit={handleSubmit3}><input onInput={handleChange3} type="description" name="description" placeholder="New Description of Business" value={formData.description}/><button className="updateBusinessButton">Update</button></form>
+              <p>Image of Business: {bizInfo.image ? bizInfo.image : <span>Loading...</span>}</p>
+            </div>
             <Link id="manageJobPostsLink" to={`/profile/business/${pageID}/manage-jobs`}>Manage your job posts</Link>
           </div>
           :

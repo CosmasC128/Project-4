@@ -72,7 +72,7 @@ const ManageJobs = () => {
         <div>CREATE JOB POST</div>
         <form onSubmit={handleJobSub} id="manageJobsPostJobsForm">
           <label>Title<input onChange={handleJobPost} type='text' name='title' value={jobFormData.title} placeholder='Change it here'></input></label>
-          <label>Jobrole<input onChange={handleJobPost} type='text' name='jobrole' value={jobFormData.jobrole} placeholder='Change it here'></input></label>
+          <label>Jobrole<input onChange={handleJobPost} type='text' name='jobrole' value={jobFormData.jobrole} placeholder='Change it here' style={{ display: 'none' }}></input></label>
           <select onChange={handleJobPost} name="jobrole" value={jobFormData.jobrole}>
             <option value="All">All</option>
             { jobroles.map(job => { 

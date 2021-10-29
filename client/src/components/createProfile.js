@@ -98,41 +98,42 @@ const CreateProfile = () => {
   //     BusinessForm.style.display = 'none'
   //   }
   // }
-
+  //formLabelInputWrap
   return (
     <div className="profileCreationWrapper">
       <div className="regPage">
-        <div className="regBox" id="regForm">Do you want to register as:
+        <div id="toggleUserBusinessBox">
+          <div>Do you want to register as:</div>
           <button id='question-box' onClick={handleUserShow}>Toggle</button>
         </div>
       </div>
-      {/* User creation */}
+      {/* User creation */} 
       <div id="user-creation" style={{ display: 'flex' }} >
         <div className="regPage">
           <div className="regBox" id="regBox">
             <form onSubmit={handleUserSubmit} id="regForm">
               <h3 id="regTitle">REGISTER AS A JOB SEEKER</h3>
-              <div className="form-field regField" >
+              <div className="formLabelInputWrap" >
                 <label htmlFor="username" className="regLabel">First Name</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="firstname" placeholder="First Name" value={formData.firstname} />
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="email" className="regLabel">Last Name</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="lastname" placeholder="Last Name" value={formData.lastname}/>
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="password" className="regLabel">Location</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="location" placeholder="Location" value={formData.location} />
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap" id="formLabelInputWrapTextareaCL">
                 <label htmlFor="password_confirmation" className="regLabel">Cover Letter</label>
-                <textarea onInput={handleChange} className="regInputField" type="text" name="coverletter" placeholder="Type your Cover Letter"  value={formData.coverletter} />
+                <textarea onInput={handleChange} className="regInputField" type="text" name="coverletter" placeholder="Paste your Cover Letter"  value={formData.coverletter} />
               </div>
-              <div className="form-field regField">
-                <label htmlFor="password_confirmation" className="regLabel">CV</label>
-                <textarea onInput={handleChange} className="regInputField" type="text" name="cv" placeholder="Type your CV"  value={formData.cv} />
+              <div className="formLabelInputWrap" id="formLabelInputWrapTextareaCV">
+                <label htmlFor="cv" className="regLabel">CV</label>
+                <textarea onInput={handleChange} className="regInputField" type="text" name="cv" placeholder="Paste your CV"  value={formData.cv} />
               </div>
-              <button className="btn btn-dark " id="regBtn">Create Profile</button>
+              <button id="regBtn">Create Profile</button>
             </form>
           </div>
         </div>
@@ -143,15 +144,15 @@ const CreateProfile = () => {
           <div className="regBox" id="regBox">
             <form onSubmit={handleBizSubmit} id="regForm">
               <h3 id="regTitle">REGISTER AS A BUSINESS</h3>
-              <div className="form-field regField" >
+              <div className="formLabelInputWrap" >
                 <label htmlFor="username" className="regLabel">Business Name</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="title" placeholder="Business Name" value={formData.title} />
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="email" className="regLabel">Location</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="location" placeholder="Location" value={formData.location}/>
               </div>
-              <div className="form-field regField">
+              <div className="formLabelInputWrap">
                 <label htmlFor="password" className="regLabel">Description</label>
                 <input onInput={handleChange} className="regInputField" type="text" name="description" placeholder="Describe what your business does" value={formData.description} />
               </div>
