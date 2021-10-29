@@ -74,16 +74,17 @@ const PublicEmployeeProfile = () => {
   
   const verifyRelationship = () => {
     if (business.id){ // fix this here
-      console.log(business.id)
+      // console.log(business.id)
       if (Businessprofile.includes(business.id)){
-        console.log('true')
+        // console.log('true')
         return true
       } else {
-        console.log('false')
+        // console.log('false')
         return false
       }
     }
   }
+
 
 
   // gary code below
@@ -92,21 +93,22 @@ const PublicEmployeeProfile = () => {
   const lastName = employee.lastname
   const location = employee.location
   const image = employee.image
+  console.log(image)
   const cv = employee.cv
   const coverLetter = employee.coverletter
 
   // *** DON'T TOUCH WHILE DOING WILLIAM'S CODE
   let reconstructedImage = ''
   if (image){
-    console.log(id)
-    if (id === 36){
-      reconstructedImage = 'https://i.imgur.com/' + image.slice(-12)
-    } else {
-      reconstructedImage = 'https://i.imgur.com/c' + image.slice(-11)
+    if (id !== '36'){
+      reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+      console.log(reconstructedImage)
+    } else if (id === '36') {
+      reconstructedImage = 'https://i.imgur.com/cNeRzXn.jpeg'
     }
   }
-  console.log(image, 'image')
-  console.log(reconstructedImage, 'reconstructed')
+  // console.log(image, 'image')
+  // console.log(reconstructedImage, 'reconstructed')
 
   //! Using Let variables so we can redefine within the if statement for rendering in jsx
   let onerating
@@ -210,41 +212,41 @@ const PublicEmployeeProfile = () => {
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label>Passion</label>
                   <select onChange={handleReviewChange} name="passion" value={formData.passion}>
-                    <option value="1">one star</option>
-                    <option value="2">two star</option>
-                    <option value="3">three star</option>
-                    <option value="4">four star</option>
-                    <option value="5">five star</option>
+                    <option value="1">⭐️</option>
+                    <option value="2">⭐️⭐️</option>
+                    <option value="3">⭐️⭐️⭐️</option>
+                    <option value="4">⭐️⭐️⭐️⭐️</option>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                   </select>
                 </div>  
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label>Presence</label>
                   <select onChange={handleReviewChange} name="presence" value={formData.presence}>
-                    <option value="1">one star</option>
-                    <option value="2">two star</option>
-                    <option value="3">three star</option>
-                    <option value="4">four star</option>
-                    <option value="5">five star</option>
+                    <option value="1">⭐️</option>
+                    <option value="2">⭐️⭐️</option>
+                    <option value="3">⭐️⭐️⭐️</option>
+                    <option value="4">⭐️⭐️⭐️⭐️</option>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                   </select>
                 </div> 
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label>Punctuality</label>
                   <select onChange={handleReviewChange} name="punctuality" value={formData.punctuality}>
-                    <option value="1">one star</option>
-                    <option value="2">two star</option>
-                    <option value="3">three star</option>
-                    <option value="4">four star</option>
-                    <option value="5">five star</option>
+                    <option value="1">⭐️</option>
+                    <option value="2">⭐️⭐️</option>
+                    <option value="3">⭐️⭐️⭐️</option>
+                    <option value="4">⭐️⭐️⭐️⭐️</option>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                   </select>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                   <label>Presentation</label>
                   <select onChange={handleReviewChange} name="presentation" value={formData.presentation}>
-                    <option value="1">one star</option>
-                    <option value="2">two star</option>
-                    <option value="3">three star</option>
-                    <option value="4">four star</option>
-                    <option value="5">five star</option>
+                    <option value="1">⭐️</option>
+                    <option value="2">⭐️⭐️</option>
+                    <option value="3">⭐️⭐️⭐️</option>
+                    <option value="4">⭐️⭐️⭐️⭐️</option>
+                    <option value="5">⭐️⭐️⭐️⭐️⭐️</option>
                   </select>
                 </div>
                 <button>Rate Employee</button>
