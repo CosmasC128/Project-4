@@ -9,6 +9,12 @@ const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, i
   // need to pass the business into a single click business PUT that updates the business's associated Userprofiles
   // const acceptButton = document.getElementById(`acceptApplicant${id}`)
   console.log(Businessprofile, 'business profile')
+
+  let reconstructedImage = ''
+  if (image){
+    reconstructedImage = 'https://i.imgur.com/' + image.slice(-11)
+  }
+
   const [ business, setBusiness ] = useState([])
   
   useEffect(() => {
@@ -57,7 +63,7 @@ const ApplicantCard = ({ businessID, id, owner, firstname, lastname, location, i
 
   return (<>
     <div className="applicantCardWrapper">
-      <img className="applicantCardImage" src={image} alt="applicant Image"></img>
+      <img className="applicantCardImage" src={reconstructedImage} style={{ height: '120px', width: '120px' }} alt="applicant Image"></img>
       <div className="applicantNotImage">  
         <div className="applicantOverButton">  
           <Link to={`/all-employees/${ id }`} id="applicantLink">
