@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory, useLocation } from 'react-router-dom'
-import { userIsAuthenticated, getTokenFromLocalStorage } from '../helpers/helpers'
+import { userIsAuthenticated } from '../helpers/helpers'
 import { getPayload } from '../helpers/auth.js'
 import axios from 'axios'
 
@@ -12,7 +12,6 @@ const Header = () => {
   
 
   const [ allBizData, setAllBizData ] = useState([])
-  const [ bizInfo, setBizInfo ] = useState([])
 
   useEffect(() => {
     const getData = async () => {
@@ -26,43 +25,42 @@ const Header = () => {
     getData()
     
   }, [])
-  let pageID = ''
+  let pageID = 0
 
   const findMatchingId = () => {
     for (let i = 0; i < allBizData.length; i++){
       if (allBizData[i].owner.id === userID){
         pageID = allBizData[i].id
       }
+
     }
   }
 
   let userID = 0
-
-
-  
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios.get(`/api/business-profile/${pageID}`,
-          {
-            headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-          })
-        setBizInfo({ ...data })
-      } catch (error) {
-        console.log(error)
-      }
-    }    
-    getData()
-  }, [userID])
   
   if (userIsAuthenticated()){
     userID = getPayload().sub
-    findMatchingId()
   }
+  findMatchingId()
 
-  const ownerStuff = { ...bizInfo.owner }
+  const [ business, setBusiness ] = useState([])
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        if (pageID > 0){
+          const { data } = await axios.get(`/api/business-profile/${pageID}/`)
+          setBusiness({ ...data })
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
+  console.log(business, 'business')
+  const ownerStuff = { ...business.owner }
   const ownerUsername = ownerStuff.username
-
   useEffect(() => {
   }, [location.pathname])
 
