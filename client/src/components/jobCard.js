@@ -55,7 +55,7 @@ const JobCard = (props) => { //pull in usersViewed array through here as well
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`api/business-profile/${ businessID }`)
+        const { data } = await axios.get(`api/business-profile/${ businessID }/`)
         setBusiness({ ...data })
       } catch (error) {
         console.log(error)

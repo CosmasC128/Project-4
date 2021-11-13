@@ -17,7 +17,7 @@ const EmployeeProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`/api/user-profile/${pageID}`)
+        const { data } = await axios.get(`/api/user-profile/${pageID}/`)
         setUserInfo({ ...data })
       } catch (error) {
         console.log(error)

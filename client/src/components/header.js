@@ -78,7 +78,7 @@ const Header = () => {
         {
           userIsAuthenticated() ? 
             <>
-              <Link to="/profile/redirector" id="navLink">Profile: { ownerUsername ? ownerUsername : 'CosmasC' }</Link>
+              <Link to="/profile/redirector" id="navLink">Profile: { ownerUsername ? ownerUsername : 'User' }</Link>
               <span id="navLinkLogout" onClick={handleLogout}>Logout</span>
             </>
             :

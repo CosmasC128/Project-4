@@ -14,7 +14,7 @@ const BusinessProfile = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`/api/business-profile/${pageID}`)
+        const { data } = await axios.get(`/api/business-profile/${pageID}/`)
         setBizInfo({ ...data })
       } catch (error) {
         console.log(error)

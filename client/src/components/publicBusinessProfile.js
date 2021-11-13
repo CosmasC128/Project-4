@@ -59,7 +59,7 @@ const PublicBusinessProfile = () => {
     const getData = async () => {
       try {
         if (profileID > 0){
-          const { data } = await axios.get(`/api/user-profile/${profileID}`)
+          const { data } = await axios.get(`/api/user-profile/${profileID}/`)
           setUser({ ...data })
         } else {
           console.log('not ready yet')

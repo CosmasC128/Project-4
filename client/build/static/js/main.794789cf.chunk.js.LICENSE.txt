@@ -1,0 +1,3 @@
+//! Using Let variables so we can redefine within the if statement for rendering in jsx
+
+//!check that we have an employee id and that we actually have a rating or this will not display

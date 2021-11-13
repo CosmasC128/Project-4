@@ -14,9 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import path, include, re_path # <-- added this new import re_path
+from .views import index # <-- also new
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,7 +28,8 @@ urlpatterns = [
     path('api/empreview/', include('Empreview.urls')),
     path('api/busrating/', include('Busrating.urls')),
     path('api/jobposts/', include('Jobpost.urls')),
-    path('api/jobroles/', include('Jobrole.urls'))
+    path('api/jobroles/', include('Jobrole.urls')),
+    re_path(r'^.*$', index)
 ] #put api in front with no slash if our frontend is put together
 if settings.DEBUG:
   urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
